@@ -17,9 +17,9 @@ function NavigationProvider() {
           tabBarStyle: {
             backgroundColor: '#7141FA',
             borderRadius: 100,
-            marginHorizontal: 20,
-            marginVertical: 15,
-            padding: 30
+            marginHorizontal: 16,
+            marginVertical: 16,
+            padding: 32
           }
         }}
         sceneContainerStyle={{
