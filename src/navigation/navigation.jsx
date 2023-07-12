@@ -18,8 +18,8 @@ function NavigationProvider() {
             backgroundColor: '#7141FA',
             borderRadius: 100,
             marginHorizontal: 16,
-            marginVertical: 16,
-            padding: 32
+            marginVertical: 32,
+            height: 66
           }
         }}
         sceneContainerStyle={{
@@ -30,21 +30,21 @@ function NavigationProvider() {
           name='Inicio'
           component={HomeScreen}
           options={{
-            tabBarIcon: ({ color }) => <Entypo name='home' size={30} color={color} />
+            tabBarIcon: ({ color }) => <Entypo name='home' size={32} color={color} />
           }}
         />
         <Screen
           name='Nueva Tarea'
           component={TaskScreen}
           options={{
-            tabBarIcon: ({ color }) => <Entypo name='circle-with-plus' size={35} color={color} />
+            tabBarIcon: ({ color }) => <Entypo name='circle-with-plus' size={48} color={color} />
           }}
         />
         <Screen
           name='Configuración'
           component={SettingScreen}
           options={{
-            tabBarIcon: ({ color }) => <Entypo name='cog' size={30} color={color} />
+            tabBarIcon: ({ color }) => <Entypo name='cog' size={32} color={color} />
           }}
         />
       </Navigator>
