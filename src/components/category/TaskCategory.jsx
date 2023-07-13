@@ -27,7 +27,7 @@ function TaskCategory({ category, iconName, color }) {
   return (
     <View style={[styles.container, containerStyle]}>
       <Entypo name={iconName} size={40} color='#ffffff' />
-      <Text style={styles.text}>{category}</Text>
+      {category && <Text style={styles.text}>{category}</Text>}
     </View>
   )
 }

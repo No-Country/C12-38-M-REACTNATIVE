@@ -1,17 +1,27 @@
 import { Entypo } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
+import { StatusBar } from 'expo-status-bar'
+import { useRef } from 'react'
+import { ProfileImage, SettingModal } from '../components'
 import { HomeScreen, SettingScreen, TaskScreen } from '../screens'
 
 const { Navigator, Screen } = createBottomTabNavigator()
 
 function NavigationProvider() {
+  const bottomSheetModalRef = useRef()
+  const handleModalOpen = () => bottomSheetModalRef.current?.present()
+
   return (
     <NavigationContainer>
+      <StatusBar style='inverted' />
       <Navigator
         screenOptions={{
+          headerTitleStyle: { color: '#ffffff', fontSize: 20, fontWeight: '600' },
+          headerTitleAlign: 'center',
+          headerRight: () => <ProfileImage onPress={handleModalOpen} />,
+          headerStyle: { backgroundColor: '#7141FA', height: 120 },
           tabBarShowLabel: false,
-          headerShown: false,
           tabBarActiveTintColor: '#fff',
           tabBarInactiveTintColor: '#b2b2b2',
           tabBarStyle: {
@@ -48,6 +58,7 @@ function NavigationProvider() {
           }}
         />
       </Navigator>
+      <SettingModal ref={bottomSheetModalRef} />
     </NavigationContainer>
   )
 }
