@@ -8,3 +8,4 @@ export { default as AccountTextInput } from './form-account-modification/Account
 export { default as ProfileImage } from './image/ProfileImage'
 export { default as SettingBackdrop } from './modal/SettingBackdrop'
 export { default as SettingModal } from './modal/SettingModal'
+export { default as ChangeProfileImage } from './image/ChangeProfileImage'
