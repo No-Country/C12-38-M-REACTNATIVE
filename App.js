@@ -11,7 +11,6 @@ export default App
 // import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // const Stack = createNativeStackNavigator();
-
 // import Registration_Page from './src/screens/register/Registration_Page';
 // import Weekly_Calendar from './src/screens/task/Weekly_Calendar';
 
