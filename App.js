@@ -15,11 +15,11 @@
 // export default App;
 
 import React from "react";
-import LogIn_Page from "../C12-38-M-REACTNATIVE/src/screens/logIn/logIn";
+import Splash from "../C12-38-M-REACTNATIVE/src/screens/splash/splash";
 
 function App() {
   return (
-    <LogIn_Page />
+    <Splash />
   )
 }
 
