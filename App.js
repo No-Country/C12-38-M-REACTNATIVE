@@ -25,7 +25,7 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <BottomSheetModalProvider>
-        <Day_Calendar />
+        <Weekly_Calendar />
       </BottomSheetModalProvider>
     </GestureHandlerRootView>
   )

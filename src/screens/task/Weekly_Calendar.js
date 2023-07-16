@@ -33,13 +33,14 @@
 
 // export default Weekly_Calendar;
 
+import React from 'react'
 import { Entypo } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
 import { useRef } from 'react'
 import { StyleSheet, ScrollView, View, Text } from 'react-native'
-import ArrowIcon from "../../components/buttons/Icons";
+import { ArrowIcon } from "../../components/buttons/Icons";
 import GradientButton from "../../components/buttons/GradientButton";
 import { ProfileImage, SettingModal } from '../../components'
 import { SettingScreen, TaskScreen } from '../../screens'

@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-// Crea el componente de botón reutilizable
 export function ArrowIcon({ text, leftIcon, rightIcon, onPressLeft, onPressRight }) {
     return (
         <TouchableOpacity style={styles.button} disabled>
@@ -17,7 +16,7 @@ export function ArrowIcon({ text, leftIcon, rightIcon, onPressLeft, onPressRight
     );
 };
 
-export default function DayIcon({ text }) {
+export function DayIcon({ text }) {
     return (
         <TouchableOpacity style={styles.day}>
             <Text style={styles.textDay}>{text}</Text>
@@ -25,14 +24,13 @@ export default function DayIcon({ text }) {
     );
 };
 
-// Define los estilos del botón
 const styles = StyleSheet.create({
     button: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         backgroundColor: '#D9D9D9',
-        marginVertical: 50,
+        marginVertical: 35,
         marginRight: 30,
         marginLeft: 30,
         padding: 15,
@@ -43,8 +41,8 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         fontSize: 19,
     },
-    
-    day:{
+
+    day: {
         alignItems: 'center',
         backgroundColor: '#7141FA',
         marginVertical: 35,
