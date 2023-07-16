@@ -15,14 +15,18 @@
 // export default App;
 
 import React from "react";
-import Splash from "../C12-38-M-REACTNATIVE/src/screens/splash/splash";
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
+import Day_Calendar from "./src/screens/task/Day_Calendar";
+import Weekly_Calendar from "./src/screens/task/Weekly_Calendar";
 
-function App() {
+
+export default function App() {
   return (
-    <Splash />
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <BottomSheetModalProvider>
+        <Day_Calendar />
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   )
 }
-
-export default App;
-
-

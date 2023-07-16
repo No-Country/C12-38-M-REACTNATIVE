@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, View } from "react-native";
+import { Image, View, StyleSheet } from "react-native";
 
 function Splash() {
     return (
