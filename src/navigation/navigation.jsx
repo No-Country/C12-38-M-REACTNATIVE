@@ -1,10 +1,12 @@
+import React from 'react'
 import { Entypo } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
 import { useRef } from 'react'
 import { ProfileImage, SettingModal } from '../components'
-import { HomeScreen, SettingScreen, TaskScreen } from '../screens'
+import { SettingScreen, TaskScreen } from '../screens'
+import MainStack from '../screens/task/MainStack' // Importa el componente MainStack
 
 const { Navigator, Screen } = createBottomTabNavigator()
 
@@ -38,7 +40,7 @@ function NavigationProvider() {
       >
         <Screen
           name='Inicio'
-          component={HomeScreen}
+          component={MainStack}
           options={{
             tabBarIcon: ({ color }) => <Entypo name='home' size={32} color={color} />
           }}
@@ -63,4 +65,4 @@ function NavigationProvider() {
   )
 }
 
-export default NavigationProvider
+export default NavigationProvider;
