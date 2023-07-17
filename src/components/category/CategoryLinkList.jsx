@@ -19,4 +19,4 @@ function CategoryLinkList() {
   )
 }
 
-export default CategoryLinkList
+export default CategoryLinkList;

@@ -28,4 +28,4 @@ function CategoryLink({ to, children }) {
   )
 }
 
-export default CategoryLink
+export default CategoryLink;

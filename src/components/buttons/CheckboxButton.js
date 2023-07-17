@@ -1,6 +1,6 @@
 import Checkbox from 'expo-checkbox';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 export default function App() {
     const [isChecked, setChecked] = useState(false);
@@ -13,25 +13,20 @@ export default function App() {
                 onValueChange={setChecked}
                 color={isChecked ? '#4630EB' : undefined}
             />
-            <Text style={styles.paragraph}>Custom colored checkbox</Text>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        marginHorizontal: 16,
-        marginVertical: 32,
-    },
     section: {
         flexDirection: 'row',
         alignItems: 'center',
     },
-    paragraph: {
-        fontSize: 15,
-    },
     checkbox: {
         margin: 8,
+        padding: 10,
+        borderColor: '#000',
+        borderWidth: 2.8,
+        borderRadius: 6
     },
 });
