@@ -39,6 +39,7 @@
     "@commitlint/config-conventional": "^17.6.6",
     "eslint": "^8.45.0",
     "husky": "^8.0.3",
+    "prettier": "^3.0.0",
     "standard": "^17.1.0"
   },
   "overrides": {
