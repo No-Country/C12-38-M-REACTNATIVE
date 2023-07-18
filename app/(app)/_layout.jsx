@@ -1,11 +1,11 @@
 import { Stack } from 'expo-router'
-import { Text } from 'react-native'
+import { TabBar } from '../../components'
 
 function AppLayout() {
   return (
     <>
       <Stack />
-      <Text>Navegacion</Text>
+      <TabBar />
     </>
   )
 }
