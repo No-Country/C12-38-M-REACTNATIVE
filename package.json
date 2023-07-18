@@ -38,7 +38,8 @@
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
     "eslint": "^8.45.0",
-    "husky": "^8.0.3"
+    "husky": "^8.0.3",
+    "standard": "^17.1.0"
   },
   "overrides": {
     "metro": "0.76.0",
