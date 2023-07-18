@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
-import { CategoryLinkList, TaskCategoryList } from '../components'
+import { Link } from 'expo-router'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { CategoryLinkList, TaskCategoryList } from '../../components'
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     gap: 40,
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 
 function HomeScreen() {
   return (
-    <View style={styles.screen}>
+    <ScrollView contentContainerStyle={styles.screen}>
       <View style={styles.text}>
         <Text style={styles.date}>Viernes, 30 de junio de 2023</Text>
         <Text style={styles.message}>
@@ -39,7 +39,13 @@ function HomeScreen() {
       </View>
       <CategoryLinkList />
       <TaskCategoryList />
-    </View>
+      {/* LINKS DE AYUDA */}
+      <Link href={'/setting/account'}>Cuenta</Link>
+      <Link href={'/setting/profile-image'}>foto de perfil</Link>
+      <Link href={'/task/create-task'}>create taks</Link>
+      <Link href={'/login'}>login</Link>
+      <Link href={'/register'}>register</Link>
+    </ScrollView>
   )
 }
 

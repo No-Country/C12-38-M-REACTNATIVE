@@ -1,6 +1,6 @@
 import { Image, Pressable } from 'react-native'
 
-const imageSource = require('../../../assets/images/profile-image.webp')
+const imageSource = require('../../assets/images/profile-image.webp')
 
 function ProfileImage({ onPress }) {
   return (

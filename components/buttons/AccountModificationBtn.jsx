@@ -1,4 +1,4 @@
-import { Pressable, Text, StyleSheet } from 'react-native'
+import { Pressable, StyleSheet, Text } from 'react-native'
 
 const styles = StyleSheet.create({
   Pressable: {
@@ -13,10 +13,11 @@ const styles = StyleSheet.create({
   }
 })
 
-export default function AccountModificationBtn() {
+function AccountModificationBtn() {
   return (
     <Pressable style={styles.Pressable}>
       <Text style={styles.text}>GUARDAR CAMBIOS</Text>
     </Pressable>
   )
 }
+export default AccountModificationBtn

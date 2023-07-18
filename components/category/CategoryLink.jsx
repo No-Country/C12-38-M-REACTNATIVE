@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native'
+import { Link } from 'expo-router'
 import { Pressable, StyleSheet, Text } from 'react-native'
 
 const styles = StyleSheet.create({
@@ -15,17 +15,15 @@ const styles = StyleSheet.create({
 })
 
 function CategoryLink({ to, children }) {
-  const { navigate } = useNavigation()
-
-  const handleOnPress = () => {
-    navigate(to)
-  }
+  const href = `/task/${to}`
 
   return (
-    <Pressable onPress={handleOnPress} style={styles.link}>
-      <Text style={styles.text}>{children}</Text>
-    </Pressable>
+    <Link href={href} asChild>
+      <Pressable style={styles.link}>
+        <Text style={styles.text}>{children}</Text>
+      </Pressable>
+    </Link>
   )
 }
 
-export default CategoryLink;
+export default CategoryLink

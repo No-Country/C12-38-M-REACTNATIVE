@@ -1,7 +1,6 @@
 {
   "name": "lot-todo",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -28,7 +27,10 @@
     "react-native-reanimated": "~2.14.4",
     "react-native-safe-area-context": "4.5.0",
     "react-native-screens": "~3.20.0",
-    "react-native-web": "~0.18.10"
+    "react-native-web": "~0.18.10",
+    "expo-router": "^1.0.0",
+    "expo-linking": "~4.0.1",
+    "expo-constants": "~14.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -36,6 +38,10 @@
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
     "husky": "^8.0.3"
+  },
+  "overrides": {
+    "metro": "0.76.0",
+    "metro-resolver": "0.76.0"
   },
   "private": true
 }

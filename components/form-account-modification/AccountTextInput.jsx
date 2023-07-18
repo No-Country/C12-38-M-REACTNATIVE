@@ -1,8 +1,5 @@
 import { StyleSheet, TextInput } from 'react-native'
 
-export default function AccountTextInput({ data }) {
-  return <TextInput value={data.value} type={data.type} placeholder={data.placeHolder} style={styles.textInput} />
-}
 const styles = StyleSheet.create({
   textInput: {
     width: 270,
@@ -15,3 +12,9 @@ const styles = StyleSheet.create({
     color: '#929090'
   }
 })
+
+function AccountTextInput({ data }) {
+  return <TextInput value={data.value} type={data.type} placeholder={data.placeHolder} style={styles.textInput} />
+}
+
+export default AccountTextInput
