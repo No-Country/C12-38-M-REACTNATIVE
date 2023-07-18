@@ -4,7 +4,7 @@ const imageSource = require('../../assets/images/profile-image.webp')
 
 function ProfileImage({ onPress }) {
   return (
-    <Pressable onPress={onPress} style={{ marginRight: 20 }}>
+    <Pressable onPress={onPress} style={{ marginRight: 20, marginVertical: 12 }}>
       <Image source={imageSource} />
     </Pressable>
   )
