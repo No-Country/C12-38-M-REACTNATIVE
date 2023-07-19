@@ -1,6 +1,7 @@
 import { Entypo } from '@expo/vector-icons'
 import { BottomSheetModal } from '@gorhom/bottom-sheet'
-import { forwardRef } from 'react'
+import { Link } from 'expo-router'
+import { forwardRef, useMemo } from 'react'
 import { Pressable, StyleSheet, Switch, Text, View } from 'react-native'
 import { useSwitch } from '../../hooks'
 import SettingBackdrop from './SettingBackdrop'
@@ -30,27 +31,32 @@ const styles = StyleSheet.create({
   }
 })
 
-const SettingModal = forwardRef(function SettingModal(props, ref) {
+const SettingModal = forwardRef(function SettingModal({ onModalClose }, ref) {
   const [enabledSwitch1, toggleSwitch1] = useSwitch()
   const [enabledSwitch2, toggleSwitch2] = useSwitch()
+  const snapPoints = useMemo(() => ['50%', '50%'], [])
 
   return (
     <BottomSheetModal
       ref={ref}
       index={1}
-      snapPoints={['50%', '50%']}
+      snapPoints={snapPoints}
       handleIndicatorStyle={{ backgroundColor: '#7141FA', width: 50, height: 5 }}
       backdropComponent={(props) => <SettingBackdrop {...props} />}
     >
       <View style={styles.modal}>
-        <Pressable style={styles.button}>
-          <Text style={styles.text}>Cuenta</Text>
-          <Entypo name='chevron-right' size={24} color='black' />
-        </Pressable>
-        <Pressable style={styles.button}>
-          <Text style={styles.text}>Foto de perfil</Text>
-          <Entypo name='chevron-right' size={24} color='black' />
-        </Pressable>
+        <Link onPress={onModalClose} href='/setting/account' asChild>
+          <Pressable style={styles.button}>
+            <Text style={styles.text}>Cuenta</Text>
+            <Entypo name='chevron-right' size={24} color='black' />
+          </Pressable>
+        </Link>
+        <Link onPress={onModalClose} href='/setting/profile-image' asChild>
+          <Pressable style={styles.button}>
+            <Text style={styles.text}>Foto de perfil</Text>
+            <Entypo name='chevron-right' size={24} color='black' />
+          </Pressable>
+        </Link>
         <Pressable style={styles.button}>
           <Text style={styles.text}>Notificaciones</Text>
           <Switch
