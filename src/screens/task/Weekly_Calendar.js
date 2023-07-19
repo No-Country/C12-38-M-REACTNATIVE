@@ -34,15 +34,15 @@
 
 // export default Weekly_Calendar;
 
-import React from 'react'
+import React, { useRef } from 'react'
 import { Entypo } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
-import { useRef } from 'react'
+
 import { StyleSheet, ScrollView, View, Text } from 'react-native'
-import { ArrowIcon } from "../../components/buttons/Icons";
-import GradientButton from "../../components/buttons/GradientButton";
+import { ArrowIcon } from '../../components/buttons/Icons'
+import GradientButton from '../../components/buttons/GradientButton'
 import { ProfileImage, SettingModal } from '../../components'
 import { SettingScreen, TaskScreen } from '../../screens'
 
@@ -52,18 +52,18 @@ function Weekly() {
   return (
     <ScrollView>
       <ArrowIcon
-        text="Semana x de mes"
-        leftIcon="chevron-left"
-        rightIcon="chevron-right"
+        text='Semana x de mes'
+        leftIcon='chevron-left'
+        rightIcon='chevron-right'
         onPressLeft={() => console.log('Navegar a la página anterior')}
         onPressRight={() => console.log('Navegar a la página siguiente')}
       />
       <View>
         <Text style={styles.text}>Domingo X</Text>
       </View>
-      <GradientButton color={'#E15554'} />
-      <GradientButton color={'#01AC46'} />
-      <GradientButton color={'#E1BC29'} />
+      <GradientButton color='#E15554' />
+      <GradientButton color='#01AC46' />
+      <GradientButton color='#E1BC29' />
     </ScrollView>
   )
 }
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   }
 })
 
-function Weekly_Calendar() {
+function WeeklyCalendar() {
   const bottomSheetModalRef = useRef()
   const handleModalOpen = () => bottomSheetModalRef.current?.present()
 
@@ -132,4 +132,4 @@ function Weekly_Calendar() {
   )
 }
 
-export default Weekly_Calendar;
+export default WeeklyCalendar

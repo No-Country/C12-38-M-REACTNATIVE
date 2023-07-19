@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
 function CategoryLinkList() {
   return (
     <View style={styles.list}>
-      <CategoryLink to={'today'}>Hoy</CategoryLink>
-      <CategoryLink to={'weekly'}>Semanal</CategoryLink>
-      <CategoryLink to={'monthly'}>Mensual</CategoryLink>
+      <CategoryLink to='today'>Hoy</CategoryLink>
+      <CategoryLink to='weekly'>Semanal</CategoryLink>
+      <CategoryLink to='monthly'>Mensual</CategoryLink>
     </View>
   )
 }
