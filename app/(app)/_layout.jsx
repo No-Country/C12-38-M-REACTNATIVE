@@ -1,10 +1,17 @@
 import { Entypo } from '@expo/vector-icons'
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import { Stack, useRouter } from 'expo-router'
-import { ProfileImage, TabBar } from '../../components'
+import { useRef } from 'react'
+import { ProfileImage, SettingModal, TabBar } from '../../components'
 
 function AppLayout() {
+  const bottomSheetModalRef = useRef(null)
+
+  const handleModalOpen = () => bottomSheetModalRef.current?.present()
+  const handleModalClose = () => bottomSheetModalRef.current?.dismiss()
+
   return (
-    <>
+    <BottomSheetModalProvider>
       <Stack
         screenOptions={{
           headerTitleStyle: {
@@ -18,7 +25,7 @@ function AppLayout() {
             return <Entypo onPress={back} name='chevron-left' size={32} color='#ffffff' style={{ marginLeft: 20 }} />
           },
           headerTitleAlign: 'center',
-          headerRight: () => <ProfileImage />,
+          headerRight: () => <ProfileImage onModalOpen={handleModalOpen} />,
           headerStyle: { backgroundColor: '#7141FA' }
         }}
       >
@@ -31,7 +38,8 @@ function AppLayout() {
         <Stack.Screen name='task/weekly/index' options={{ title: 'Semanal' }} />
       </Stack>
       <TabBar />
-    </>
+      <SettingModal ref={bottomSheetModalRef} onModalClose={handleModalClose} />
+    </BottomSheetModalProvider>
   )
 }
 

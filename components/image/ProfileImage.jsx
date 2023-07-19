@@ -2,9 +2,9 @@ import { Image, Pressable } from 'react-native'
 
 const imageSource = require('../../assets/images/profile-image.webp')
 
-function ProfileImage({ onPress }) {
+function ProfileImage({ onModalOpen }) {
   return (
-    <Pressable onPress={onPress} style={{ marginRight: 20, marginVertical: 12 }}>
+    <Pressable onPress={onModalOpen} style={{ marginRight: 20, marginVertical: 12 }}>
       <Image source={imageSource} />
     </Pressable>
   )
