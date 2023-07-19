@@ -120,7 +120,7 @@ function LoginScreen() {
         </View>
         <Text style={styles.textRegistro}>
           ¿No tienes cuenta?
-          <Link href={'/register'} asChild>
+          <Link href='/register' asChild>
             <Pressable>
               <Text style={styles.linkRegistro}> Regístrate ahora </Text>
             </Pressable>
