@@ -39,12 +39,13 @@ function HomeScreen() {
       </View>
       <CategoryLinkList />
       <TaskCategoryList />
-      {/* LINKS DE AYUDA */}
-      <Link href={'/setting/account'}>Cuenta</Link>
-      <Link href={'/setting/profile-image'}>foto de perfil</Link>
-      <Link href={'/task/create-task'}>create taks</Link>
-      <Link href={'/login'}>login</Link>
-      <Link href={'/register'}>register</Link>
+      {/* LINKS DE AYUDA TEMPORALES */}
+      <Link href='/setting/account'>Cuenta</Link>
+      <Link href='/setting/profile-image'>foto de perfil</Link>
+      <Link href='/task/create-task'>create taks</Link>
+      <Link href='/login'>login</Link>
+      <Link href='/register'>register</Link>
+      <Link href='/task/category'>category</Link>
     </ScrollView>
   )
 }

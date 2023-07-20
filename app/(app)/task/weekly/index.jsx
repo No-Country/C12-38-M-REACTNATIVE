@@ -1,7 +1,7 @@
-import Weekly_Calendar from '../../../../src/screens/task/Weekly_Calendar'
+import WeeklyCalendar from '../../../../src/screens/task/Weekly_Calendar'
 
 function WeeklyScreen() {
-  return <Weekly_Calendar />
+  return <WeeklyCalendar />
 }
 
-export default WeeklyScreen;
+export default WeeklyScreen
