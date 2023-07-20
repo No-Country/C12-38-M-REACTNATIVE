@@ -1,7 +1,7 @@
-import { Text } from 'react-native'
+import Weekly_Calendar from '../../../../src/screens/task/Weekly_Calendar'
 
 function WeeklyScreen() {
-  return <Text>Weekly Screen</Text>
+  return <Weekly_Calendar />
 }
 
-export default WeeklyScreen
+export default WeeklyScreen;
