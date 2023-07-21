@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
-import { Entypo, AntDesign } from '@expo/vector-icons'
-import { db } from '../../src/services/firebase'
-import { collection, addDoc } from 'firebase/firestore'
+import { AntDesign, Entypo } from '@expo/vector-icons'
 import { Link } from 'expo-router'
+import { addDoc, collection } from 'firebase/firestore'
+import { useState } from 'react'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { db } from '../../services/firebase/firebase.config'
 
 function CreateTask() {
   const [state, setstate] = useState({
@@ -82,7 +82,7 @@ function CreateTask() {
           onChangeText={(value) => handleChangeText('comment', value)}
         />
       </View>
-      <Link href={'../../src/screens/screen'}>
+      <Link href='../../src/screens/screen'>
         <TouchableOpacity style={styles.button} onPress={() => saveNewTask()}>
           <Text style={styles.buttonText}>AGREGAR</Text>
         </TouchableOpacity>
