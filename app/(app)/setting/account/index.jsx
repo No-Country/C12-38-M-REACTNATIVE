@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { AccountModificationBtn, AccountTextInput } from '../../../../components'
+import { useAuth } from '../../../../hooks'
 
 const styles = StyleSheet.create({
   screen: {
@@ -30,14 +31,17 @@ const styles = StyleSheet.create({
 })
 
 function AccountScreen() {
+  const { user } = useAuth()
+  const username = user.displayName ?? 'Loto'
+
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>
-        Confirma o modifica los datos de tu <Text style={styles.span}>Cuenta</Text>
+        Confirmá o modificá los datos de tu cuenta <Text style={styles.span}>{username}</Text>
       </Text>
       <View style={styles.form}>
-        <AccountTextInput data={{ type: 'name', placeHolder: 'Lucas' }} />
-        <AccountTextInput data={{ type: 'email', placeHolder: 'LucasGomez@gmail.com' }} />
+        <AccountTextInput data={{ type: 'name', placeHolder: username }} />
+        <AccountTextInput data={{ type: 'email', placeHolder: user.email }} />
         <AccountTextInput data={{ type: 'password', placeHolder: '**********' }} />
         <AccountTextInput data={{ type: 'password', placeHolder: 'confirmar contraseña' }} />
       </View>

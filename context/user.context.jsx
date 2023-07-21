@@ -1,11 +1,25 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { createContext, useState } from 'react'
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
+import { createContext, useEffect, useState } from 'react'
 import { auth } from '../services/firebase/firebase.config'
 
 export const UserContext = createContext({})
 
 function UserProvider({ children }) {
   const [user, setUser] = useState(false)
+
+  useEffect(() => {
+    const onSubscribeUser = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log('existe usuario')
+        setUser(user)
+      } else {
+        console.log('no existe usuario')
+        setUser(null)
+      }
+    })
+
+    return () => onSubscribeUser()
+  }, [])
 
   const signUp = ({ email, password }) => {
     return createUserWithEmailAndPassword(auth, email, password)
