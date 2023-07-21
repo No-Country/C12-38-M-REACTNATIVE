@@ -1,6 +1,8 @@
 import { LinearGradient } from 'expo-linear-gradient'
 import { Link } from 'expo-router'
+import { useState } from 'react'
 import { Image, Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
+import { useAuth } from '../../../hooks'
 
 const styles = StyleSheet.create({
   gradient: {
@@ -19,7 +21,6 @@ const styles = StyleSheet.create({
     width: 288,
     height: 40,
     borderRadius: 12,
-    placeholderTextColor: '#D9D9D9',
     textAlign: 'center'
   },
   passwordInput: {
@@ -29,7 +30,6 @@ const styles = StyleSheet.create({
     width: 288,
     height: 40,
     borderRadius: 12,
-    placeholderTextColor: '#D9D9D9',
     textAlign: 'center'
   },
   LogInButton: {
@@ -94,6 +94,26 @@ const styles = StyleSheet.create({
 })
 
 function LoginScreen() {
+  const { setUser, signIn } = useAuth()
+  const [form, setForm] = useState({
+    email: '',
+    password: ''
+  })
+
+  const handleOnChange = (name, value) => {
+    setForm((prevForm) => ({ ...prevForm, [name]: value }))
+  }
+
+  const handleSignIn = async () => {
+    try {
+      const { user } = await signIn(form)
+      setUser(user)
+      alert('Iniciaste sesión')
+    } catch (error) {
+      alert(error.message)
+    }
+  }
+
   return (
     <LinearGradient
       colors={['#ffffff', '#7141FA']}
@@ -102,9 +122,21 @@ function LoginScreen() {
       style={styles.gradient}
     >
       <View style={styles.container}>
-        <TextInput style={styles.emailInput} placeholder='Ingresa tu email' />
-        <TextInput style={styles.passwordInput} placeholder='Contraseña' />
-        <Pressable style={styles.LogInButton}>
+        <TextInput
+          value={form.email}
+          onChangeText={(value) => handleOnChange('email', value)}
+          style={styles.emailInput}
+          data-name='email'
+          placeholder='Ingresa tu email'
+        />
+        <TextInput
+          value={form.password}
+          onChangeText={(value) => handleOnChange('password', value)}
+          style={styles.passwordInput}
+          data-name='password'
+          placeholder='Contraseña'
+        />
+        <Pressable style={styles.LogInButton} onPress={handleSignIn}>
           <Text>LOG IN</Text>
         </Pressable>
         <Text style={styles.textIngreso}>O ingresa con</Text>
