@@ -3,7 +3,7 @@ import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import { Link } from 'expo-router'
 import { forwardRef, useMemo } from 'react'
 import { Pressable, StyleSheet, Switch, Text, View } from 'react-native'
-import { useSwitch } from '../../hooks'
+import { useAuth, useSwitch } from '../../hooks'
 import SettingBackdrop from './SettingBackdrop'
 
 const styles = StyleSheet.create({
@@ -23,6 +23,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 12
   },
+  logout: {
+    borderColor: '#dc2626'
+  },
   text: {
     fontSize: 20,
     fontWeight: '600',
@@ -34,7 +37,8 @@ const styles = StyleSheet.create({
 const SettingModal = forwardRef(function SettingModal({ onModalClose }, ref) {
   const [enabledSwitch1, toggleSwitch1] = useSwitch()
   const [enabledSwitch2, toggleSwitch2] = useSwitch()
-  const snapPoints = useMemo(() => ['50%', '50%'], [])
+  const snapPoints = useMemo(() => ['65%', '65%'], [])
+  const { logOut } = useAuth()
 
   return (
     <BottomSheetModal
@@ -76,6 +80,10 @@ const SettingModal = forwardRef(function SettingModal({ onModalClose }, ref) {
             onChange={toggleSwitch2}
             value={enabledSwitch2}
           />
+        </Pressable>
+        <Pressable onPress={logOut} style={[styles.button, styles.logout]}>
+          <Text style={styles.text}>Cerrar sesión</Text>
+          <Entypo name='log-out' size={24} color='black' />
         </Pressable>
       </View>
     </BottomSheetModal>

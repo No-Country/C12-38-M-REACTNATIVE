@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
+import { createUserWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth'
 import { createContext, useEffect, useState } from 'react'
 import { auth } from '../services/firebase/firebase.config'
 
@@ -25,7 +25,11 @@ function UserProvider({ children }) {
     return createUserWithEmailAndPassword(auth, email, password)
   }
 
-  const values = { user, setUser, signUp }
+  const logOut = () => {
+    return signOut(auth)
+  }
+
+  const values = { user, setUser, signUp, logOut }
 
   return <UserContext.Provider value={values}>{children}</UserContext.Provider>
 }
