@@ -1,13 +1,11 @@
 import { Entypo } from '@expo/vector-icons'
-import { StyleSheet, Text } from 'react-native'
 import { Link } from 'expo-router'
+import { Pressable, StyleSheet, Text } from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
     width: 100,
     height: 100,
     gap: 4,
@@ -30,9 +28,11 @@ function TaskCategory({ category, iconName, color }) {
   }
 
   return (
-    <Link href={href} style={[styles.container, containerStyle]}>
-      <Entypo name={iconName} size={40} color='#ffffff' />
-      {category && <Text style={styles.text}>{category}</Text>}
+    <Link href={href} style={[styles.container, containerStyle]} asChild>
+      <Pressable>
+        <Entypo name={iconName} size={40} color='#ffffff' />
+        {category && <Text style={styles.text}>{category}</Text>}
+      </Pressable>
     </Link>
   )
 }
