@@ -8,7 +8,7 @@
     "userInterfaceStyle": "light",
     "scheme": "lot-todo",
     "splash": {
-      "image": "./assets/inicio.png",
+      "image": "./assets/Inicio.png",
       "resizeMode": "cover",
       "backgroundColor": "#7141FA"
     },
