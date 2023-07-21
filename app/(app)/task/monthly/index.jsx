@@ -3,8 +3,7 @@ import Calendar from '../../../../components/monthly/calendar'
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginTop: 40
+    flex: 1
   }
 })
 
