@@ -1,19 +1,11 @@
 import { useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { View } from 'react-native'
 import { SwipeListView } from 'react-native-swipe-list-view'
-import { TaskRemoveIcon } from '../../../../components'
-import { ButtonCategory } from '../../../../components/buttons/ButtonCategory'
-import GradientButton from '../../../../components/buttons/GradientButton'
+import { TaskRemoveIcon } from '../../../components'
+import GradientButton from '../../../components/buttons/GradientButton'
+import { DayIcon } from '../../../components/buttons/Icons'
 
-const style = StyleSheet.create({
-  cont: {
-    justifyContent: 'center',
-    paddingVertical: 20,
-    gap: 20
-  }
-})
-
-const CategoryScreen = () => {
+function Day() {
   const [listOfTasks, setListOfTasks] = useState([
     { id: 1, color: '#4D9DE0' },
     { id: 2, color: '#E15554' },
@@ -28,8 +20,8 @@ const CategoryScreen = () => {
   }
 
   return (
-    <View style={style.cont}>
-      <ButtonCategory />
+    <View style={{ flex: 1 }}>
+      <DayIcon text='xx de mes' />
       <SwipeListView
         data={listOfTasks}
         renderItem={({ item }) => <GradientButton color={item.color} />}
@@ -42,4 +34,4 @@ const CategoryScreen = () => {
   )
 }
 
-export default CategoryScreen
+export default Day
