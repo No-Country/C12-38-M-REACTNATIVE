@@ -1,5 +1,95 @@
+import { useState } from 'react'
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
 import { Entypo, AntDesign } from '@expo/vector-icons'
+import { db } from '../../src/services/firebase'
+import { collection, addDoc } from 'firebase/firestore'
+import { Link } from 'expo-router'
+
+function CreateTask() {
+  const [state, setstate] = useState({
+    name: '',
+    day: '',
+    time: '',
+    category: '',
+    comment: ''
+  })
+
+  const handleChangeText = (name, value) => {
+    setstate({ ...state, [name]: value })
+  }
+
+  const saveNewTask = async () => {
+    if (state.name === '' || state.day === '' || state.time === '' || state.category === '' || state.comment === '') {
+      alert('Please provide all date')
+    } else {
+      try {
+        await addDoc(collection(db, 'tasks'), {
+          name: state.name,
+          day: state.day,
+          time: state.time,
+          category: state.category,
+          comment: state.comment
+        })
+        alert('Registro Completado')
+      } catch (e) {
+        console.error('Error añadiendo el documento', e)
+      }
+    }
+  }
+
+  return (
+    <View style={styles.containerBody}>
+      <View>
+        <TextInput
+          placeholder='Tarea'
+          placeholderTextColor='#B7B7B7'
+          style={styles.textInput}
+          onChangeText={(value) => handleChangeText('name', value)}
+        />
+      </View>
+      <View>
+        <TextInput
+          placeholder='El día'
+          placeholderTextColor='#B7B7B7'
+          style={styles.textInput}
+          onChangeText={(value) => handleChangeText('day', value)}
+        />
+        <Entypo style={styles.icon} name='calendar' size={24} color='#B7B7B7' />
+      </View>
+      <View>
+        <TextInput
+          placeholder='A las'
+          placeholderTextColor='#B7B7B7'
+          style={styles.textInput}
+          onChangeText={(value) => handleChangeText('time', value)}
+        />
+        <AntDesign style={styles.icon} name='clockcircleo' size={24} color='#B7B7B7' />
+      </View>
+      <View>
+        <TextInput
+          placeholder='Categoría'
+          placeholderTextColor='#B7B7B7'
+          style={styles.textInput}
+          onChangeText={(value) => handleChangeText('category', value)}
+        />
+        <AntDesign style={styles.icon} name='caretdown' size={24} color='#B7B7B7' />
+      </View>
+      <View>
+        <TextInput
+          placeholder='Añadir un comentario'
+          placeholderTextColor='#B7B7B7'
+          style={styles.textInput}
+          onChangeText={(value) => handleChangeText('comment', value)}
+        />
+      </View>
+      <Link href={'../../src/screens/screen'}>
+        <TouchableOpacity style={styles.button} onPress={() => saveNewTask()}>
+          <Text style={styles.buttonText}>AGREGAR</Text>
+        </TouchableOpacity>
+      </Link>
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   containerBody: {
@@ -45,35 +135,5 @@ const styles = StyleSheet.create({
     fontSize: 14
   }
 })
-
-const CreateTask = () => {
-  const ButtonAgregar = () => {}
-
-  return (
-    <View style={styles.containerBody}>
-      <View>
-        <TextInput placeholder='Tarea' placeholderTextColor='#B7B7B7' style={styles.textInput} />
-      </View>
-      <View>
-        <TextInput placeholder='El día' placeholderTextColor='#B7B7B7' style={styles.textInput} />
-        <Entypo style={styles.icon} name='calendar' size={24} color='#B7B7B7' />
-      </View>
-      <View>
-        <TextInput placeholder='A las' placeholderTextColor='#B7B7B7' style={styles.textInput} />
-        <AntDesign style={styles.icon} name='clockcircleo' size={24} color='#B7B7B7' />
-      </View>
-      <View>
-        <TextInput placeholder='Categoría' placeholderTextColor='#B7B7B7' style={styles.textInput} />
-        <AntDesign style={styles.icon} name='caretdown' size={24} color='#B7B7B7' />
-      </View>
-      <View>
-        <TextInput placeholder='Añadir un comentario' placeholderTextColor='#B7B7B7' style={styles.textInput} />
-      </View>
-      <TouchableOpacity style={styles.button} onPressIn={ButtonAgregar}>
-        <Text style={styles.buttonText}>AGREGAR</Text>
-      </TouchableOpacity>
-    </View>
-  )
-}
 
 export default CreateTask
