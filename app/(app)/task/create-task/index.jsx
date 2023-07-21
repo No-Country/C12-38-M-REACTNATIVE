@@ -1,12 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { CreateTask } from '../../../../components'
 
 const styles = StyleSheet.create({
   containerBody: {
     flex: 1,
-    marginTop: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#FFFFFF'
   },
   tarea: {
@@ -14,14 +11,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '400',
     lineHeight: 36,
-    letterSpacing: 0.54
+    letterSpacing: 0.54,
+    alignSelf: 'center'
   },
   containerTarea: {
     backgroundColor: '#7141FA',
     width: 227,
     height: 37,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignSelf: 'center',
     marginTop: 40,
     borderRadius: 5,
     shadowColor: '#B7B7B7',
@@ -37,12 +35,12 @@ const styles = StyleSheet.create({
 
 function CreateTaskScreen() {
   return (
-    <View style={styles.containerBody}>
+    <ScrollView style={styles.containerBody}>
       <View style={styles.containerTarea}>
         <Text style={styles.tarea}>Nueva Tarea</Text>
       </View>
       <CreateTask />
-    </View>
+    </ScrollView>
   )
 }
 

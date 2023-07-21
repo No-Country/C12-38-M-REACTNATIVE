@@ -1,20 +1,19 @@
 import { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { SwipeListView } from 'react-native-swipe-list-view'
 import { TaskRemoveIcon } from '../../../../components'
+import { ButtonCategory } from '../../../../components/buttons/ButtonCategory'
 import GradientButton from '../../../../components/buttons/GradientButton'
-import { ArrowIcon } from '../../../../components/buttons/Icons'
 
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 16,
-    marginHorizontal: 15,
-    marginBottom: 3,
-    fontWeight: '500'
+const style = StyleSheet.create({
+  cont: {
+    justifyContent: 'center',
+    paddingVertical: 20,
+    gap: 20
   }
 })
 
-function WeeklyScreen() {
+const CategoryScreen = () => {
   const [listOfTasks, setListOfTasks] = useState([
     { id: 1, color: '#4D9DE0' },
     { id: 2, color: '#E15554' },
@@ -29,17 +28,8 @@ function WeeklyScreen() {
   }
 
   return (
-    <View style={{ flex: 1 }}>
-      <ArrowIcon
-        text='Semana x de mes'
-        leftIcon='chevron-left'
-        rightIcon='chevron-right'
-        onPressLeft={() => console.log('Navegar a la página anterior')}
-        onPressRight={() => console.log('Navegar a la página siguiente')}
-      />
-      <View>
-        <Text style={styles.text}>Domingo X</Text>
-      </View>
+    <View style={style.cont}>
+      <ButtonCategory />
       <SwipeListView
         data={listOfTasks}
         renderItem={({ item }) => <GradientButton color={item.color} />}
@@ -52,4 +42,4 @@ function WeeklyScreen() {
   )
 }
 
-export default WeeklyScreen
+export default CategoryScreen

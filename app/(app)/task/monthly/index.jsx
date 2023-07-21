@@ -1,7 +1,18 @@
-import { Text } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+import Calendar from '../../../../components/monthly/calendar'
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+})
 
 function MonthlyScreen() {
-  return <Text>Monthly Screen</Text>
+  return (
+    <View style={styles.container}>
+      <Calendar />
+    </View>
+  )
 }
 
 export default MonthlyScreen
