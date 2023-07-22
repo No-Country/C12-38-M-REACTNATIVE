@@ -5,6 +5,7 @@ import { TaskRemoveIcon } from '../../../../components'
 import GradientButton from '../../../../components/buttons/GradientButton'
 import { DayIcon } from '../../../../components/buttons/Icons'
 
+
 function TodayScreen() {
   const [listOfTasks, setListOfTasks] = useState([
     { id: 1, color: '#4D9DE0' },
