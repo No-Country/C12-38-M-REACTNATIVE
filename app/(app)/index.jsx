@@ -1,6 +1,7 @@
 import { Link } from 'expo-router'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { CategoryLinkList, TaskCategoryList } from '../../components'
+import UpdatedDate from '../../components/date/updatedDate'
 
 const styles = StyleSheet.create({
   screen: {
@@ -12,11 +13,6 @@ const styles = StyleSheet.create({
   },
   text: {
     gap: 18
-  },
-  date: {
-    fontSize: 16,
-    fontWeight: '500',
-    textAlign: 'center'
   },
   message: {
     fontSize: 24,
@@ -32,7 +28,7 @@ function HomeScreen() {
   return (
     <ScrollView contentContainerStyle={styles.screen}>
       <View style={styles.text}>
-        <Text style={styles.date}>Viernes, 30 de junio de 2023</Text>
+        <UpdatedDate />
         <Text style={styles.message}>
           tienes <Text style={styles.task}>5 tareas</Text> hoy!
         </Text>

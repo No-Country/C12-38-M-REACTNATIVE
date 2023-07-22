@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { TextInput, View, StyleSheet } from 'react-native'
+import { StyleSheet, TextInput, View } from 'react-native'
 
-const CustomTextInput = ({ placeholder }) => {
+const CustomTextInput = ({ placeholder, value, onChange }) => {
   const primaryBorderColor = '#fff'
   const focusBorderColor = '#FAA958'
   const [borderColor, setBorderColor] = useState(primaryBorderColor)
@@ -14,6 +14,8 @@ const CustomTextInput = ({ placeholder }) => {
         style={styles.input_text}
         placeholder={placeholder}
         placeholderTextColor='#fff'
+        value={value}
+        onChangeText={onChange}
       />
     </View>
   )
