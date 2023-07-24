@@ -4,6 +4,7 @@ import { addDoc, collection } from 'firebase/firestore'
 import { useState } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { db } from '../../services/firebase/firebase.config'
+import DropdownCategories from './dropdownCategories'
 
 function CreateTask() {
   const [state, setstate] = useState({
@@ -65,23 +66,9 @@ function CreateTask() {
         />
         <AntDesign style={styles.icon} name='clockcircleo' size={24} color='#B7B7B7' />
       </View>
-      <View>
-        <TextInput
-          placeholder='Categoría'
-          placeholderTextColor='#B7B7B7'
-          style={styles.textInput}
-          onChangeText={(value) => handleChangeText('category', value)}
-        />
-        <AntDesign style={styles.icon} name='caretdown' size={24} color='#B7B7B7' />
-      </View>
-      <View>
-        <TextInput
-          placeholder='Añadir un comentario'
-          placeholderTextColor='#B7B7B7'
-          style={styles.textInput}
-          onChangeText={(value) => handleChangeText('comment', value)}
-        />
-      </View>
+      
+      <DropdownCategories />
+      
       <Link href='../../src/screens/screen'>
         <TouchableOpacity style={styles.button} onPress={() => saveNewTask()}>
           <Text style={styles.buttonText}>AGREGAR</Text>
