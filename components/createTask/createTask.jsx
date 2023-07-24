@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   textInput: {
-    width: 288,
+    width: 303,
     height: 40,
     borderColor: '#D9D9D9',
     borderWidth: 2,
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: '#FFFFFF',
     width: 303,
-    height: 36,
+    height: 40,
     marginTop: 33
   },
   buttonText: {

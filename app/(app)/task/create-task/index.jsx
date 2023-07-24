@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
   containerTarea: {
     backgroundColor: '#7141FA',
-    width: 227,
+    width: 303,
     height: 37,
     justifyContent: 'center',
     alignSelf: 'center',

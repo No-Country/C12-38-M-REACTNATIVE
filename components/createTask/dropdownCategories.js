@@ -18,7 +18,8 @@ const DropdownCategories = () => {
         setSelected={(val) => setSelected(val)} 
         data={data} 
         save="value"
-        boxStyles={{width: 288,
+        boxStyles={{
+            width: 303,
             height: 40,
             borderColor: '#D9D9D9',
             borderWidth: 2,
