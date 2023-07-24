@@ -2,16 +2,14 @@ import { useState } from 'react'
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
 import { Entypo, AntDesign } from '@expo/vector-icons'
 import { db } from '../../src/services/firebase'
-import { collection, addDoc } from 'firebase/firestore'
-import { Link } from 'expo-router'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 
 function CreateTask() {
   const [state, setstate] = useState({
     name: '',
     day: '',
     time: '',
-    category: '',
-    comment: ''
+    category: ''
   })
 
   const handleChangeText = (name, value) => {
@@ -19,7 +17,7 @@ function CreateTask() {
   }
 
   const saveNewTask = async () => {
-    if (state.name === '' || state.day === '' || state.time === '' || state.category === '' || state.comment === '') {
+    if (state.name === '' || state.day === '' || state.time === '' || state.category === '') {
       alert('Please provide all date')
     } else {
       try {
@@ -28,7 +26,7 @@ function CreateTask() {
           day: state.day,
           time: state.time,
           category: state.category,
-          comment: state.comment
+          createdAt: serverTimestamp()
         })
         alert('Registro Completado')
       } catch (e) {
@@ -74,19 +72,9 @@ function CreateTask() {
         />
         <AntDesign style={styles.icon} name='caretdown' size={24} color='#B7B7B7' />
       </View>
-      <View>
-        <TextInput
-          placeholder='Añadir un comentario'
-          placeholderTextColor='#B7B7B7'
-          style={styles.textInput}
-          onChangeText={(value) => handleChangeText('comment', value)}
-        />
-      </View>
-      <Link href={'../../src/screens/screen'}>
-        <TouchableOpacity style={styles.button} onPress={() => saveNewTask()}>
-          <Text style={styles.buttonText}>AGREGAR</Text>
-        </TouchableOpacity>
-      </Link>
+      <TouchableOpacity style={styles.button} onPress={() => saveNewTask()}>
+        <Text style={styles.buttonText}>AGREGAR</Text>
+      </TouchableOpacity>
     </View>
   )
 }

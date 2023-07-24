@@ -3,19 +3,29 @@ import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons'
 import CheckboxButton from './CheckboxButton'
 import { LinearGradient } from 'expo-linear-gradient'
 
-const GradientButton = ({ color }) => {
+const categoryColors = {
+  Pendientes: '#008000', // verde
+  Trabajo: '#0000FF', // azul
+  trabajo: '#0000FF', // azul
+  Ejercicio: '#FF0000', // rojo
+  Compras: '#FFA500', // naranja
+  Familia: '#800080', // morado
+  Plus: '#FFC0CB' // rosado
+}
+
+const GradientButton = ({ color, tarea, hora, dia, categoria }) => {
   return (
     <LinearGradient
       style={styles.container}
-      colors={[color, '#f1f1f1']}
+      colors={[categoryColors[color], '#f1f1f1']}
       start={{ x: 0.8, y: 0 }}
       end={{ x: 0.8, y: 1.2 }}
     >
       <View>
-        <Text style={styles.text}>Tarea</Text>
+        <Text style={styles.text}>{tarea}</Text>
         <View style={styles.textContainer}>
           <MaterialCommunityIcons name='clock-time-four-outline' size={20} color='#5C5A5A' />
-          <Text style={styles.text}>Horario</Text>
+          <Text style={styles.text}>{hora}    {dia}</Text>
         </View>
         <View
           style={{
@@ -25,7 +35,7 @@ const GradientButton = ({ color }) => {
           }}
         >
           <FontAwesome name='exclamation' size={18} color='#A90404' />
-          <Text style={styles.text}>Prioridad</Text>
+          <Text style={styles.text}>{categoria}</Text>
         </View>
         <View style={styles.check}>
           <CheckboxButton />
