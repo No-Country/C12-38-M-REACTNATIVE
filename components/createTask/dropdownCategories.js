@@ -48,7 +48,6 @@ const DropdownCategories = ({setCategory}) => {
         }}
         inputStyles={{
             color: '#B7B7B7',
-            placeholder: 'Categoría'
         }}
     />
   )

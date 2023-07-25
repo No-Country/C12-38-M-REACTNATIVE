@@ -6,6 +6,7 @@ import GradientButton from '../../../../components/buttons/GradientButton'
 import { ArrowIcon } from '../../../../components/buttons/Icons'
 import { db } from '../../../../services/firebase/firebase.config'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import DateRange from './dateRange'
 
 function WeeklyScreen() {
   // const [listOfTasks, setListOfTasks] = useState([
@@ -51,9 +52,7 @@ function WeeklyScreen() {
         onPressLeft={() => console.log('Navegar a la página anterior')}
         onPressRight={() => console.log('Navegar a la página siguiente')}
         />
-      <View>
-        <Text style={styles.text}>Domingo X</Text>
-      </View>
+
       <SwipeListView
         data={tasks}
         renderItem={({ item }) => (
