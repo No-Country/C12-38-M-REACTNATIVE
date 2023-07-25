@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     height: 37,
     justifyContent: 'center',
     alignSelf: 'center',
-    marginTop: 40,
+    marginTop: 30,
     borderRadius: 5,
     shadowColor: '#B7B7B7',
     shadowOffset: {
