@@ -1,4 +1,6 @@
 import { StyleSheet, Pressable, Text } from 'react-native'
+import TaskCategoryList from '../category/TaskCategoryList'
+
 const style = StyleSheet.create({
   button: {
     alignSelf: 'center',
@@ -26,7 +28,7 @@ const style = StyleSheet.create({
 const ButtonCategory = () => {
   return (
     <Pressable style={style.button}>
-      <Text style={style.text}>Trabajo</Text>
+      <Text style={style.text}>{category}</Text>
     </Pressable>
   )
 }

@@ -19,7 +19,7 @@ function TaskCategoryList() {
       <TaskCategory category='Ejercicio' iconName='man' color='#dc2626' />
       <TaskCategory category='Compras' iconName='shopping-cart' color='#ca8a04' />
       <TaskCategory category='Familia' iconName='users' color='#7c3aed' />
-      <TaskCategory iconName='plus' color='#db2777' />
+      <TaskCategory category='Otro' iconName='plus' color='#db2777' />
     </View>
   )
 }
