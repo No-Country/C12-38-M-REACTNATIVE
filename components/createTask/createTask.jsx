@@ -5,8 +5,11 @@ import { db } from '../../services/firebase/firebase.config'
 import DropdownCategories from './dropdownCategories'
 import InputDate from './inputDate'
 import InputTime from './inputTime'
+import { useRouter } from 'expo-router'
 
 function CreateTask() {
+  const router = useRouter();
+
   const [state, setstate] = useState({
     name: '',
     day: '',
@@ -35,6 +38,7 @@ function CreateTask() {
           createdAt: serverTimestamp()
         })
         alert('Registro Completado')
+        router.replace('/');
       } catch (e) {
         console.error('Error añadiendo el documento', e)
       }
