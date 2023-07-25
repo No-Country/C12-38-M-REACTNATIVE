@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, TouchableOpacity, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import TodayDate from '../date/todayDate'
+import DateRange from '../../app/(app)/task/weekly/dateRange'
 
 export function ArrowIcon({ text, leftIcon, rightIcon, onPressLeft, onPressRight }) {
   return (
@@ -9,7 +10,7 @@ export function ArrowIcon({ text, leftIcon, rightIcon, onPressLeft, onPressRight
       <TouchableOpacity onPress={onPressLeft}>
         <Icon style name={leftIcon} size={20} color='#0a0a0a' />
       </TouchableOpacity>
-      <Text style={styles.text}>{text}</Text>
+      <Text style={styles.text}><DateRange /></Text>
       <TouchableOpacity onPress={onPressRight}>
         <Icon name={rightIcon} size={20} color='#0a0a0a' />
       </TouchableOpacity>

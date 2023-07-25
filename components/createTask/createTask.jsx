@@ -1,26 +1,31 @@
 import { AntDesign, Entypo } from '@expo/vector-icons'
-import { Link } from 'expo-router'
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { useState } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { db } from '../../services/firebase/firebase.config'
 import DropdownCategories from './dropdownCategories'
+import InputDate from './inputDate'
+import InputTime from './inputTime'
+
 
 function CreateTask() {
   const [state, setstate] = useState({
     name: '',
     day: '',
     time: '',
-    category: '',
-    comment: ''
+    category: ''
   })
 
   const handleChangeText = (name, value) => {
     setstate({ ...state, [name]: value })
   }
 
+  const handleCategoryChange = (value) => {
+    setstate({ ...state, category: value });
+  };
+
   const saveNewTask = async () => {
-    if (state.name === '' || state.day === '' || state.time === '' || state.category === '' || state.comment === '') {
+    if (state.name === '' || state.day === '' || state.time === '' || state.category === '') {
       alert('Please provide all date')
     } else {
       try {
@@ -29,7 +34,7 @@ function CreateTask() {
           day: state.day,
           time: state.time,
           category: state.category,
-          comment: state.comment
+          createdAt: serverTimestamp()
         })
         alert('Registro Completado')
       } catch (e) {
@@ -48,32 +53,15 @@ function CreateTask() {
           onChangeText={(value) => handleChangeText('name', value)}
         />
       </View>
-      <View>
-        <TextInput
-          placeholder='El día'
-          placeholderTextColor='#B7B7B7'
-          style={styles.textInput}
-          onChangeText={(value) => handleChangeText('day', value)}
-        />
-        <Entypo style={styles.icon} name='calendar' size={24} color='#B7B7B7' />
-      </View>
-      <View>
-        <TextInput
-          placeholder='A las'
-          placeholderTextColor='#B7B7B7'
-          style={styles.textInput}
-          onChangeText={(value) => handleChangeText('time', value)}
-        />
-        <AntDesign style={styles.icon} name='clockcircleo' size={24} color='#B7B7B7' />
-      </View>
+      <InputDate />
+
+      <InputTime />
+
+      <DropdownCategories setCategory={handleCategoryChange}/>
       
-      <DropdownCategories />
-      
-      <Link href='../../src/screens/screen'>
-        <TouchableOpacity style={styles.button} onPress={() => saveNewTask()}>
-          <Text style={styles.buttonText}>AGREGAR</Text>
-        </TouchableOpacity>
-      </Link>
+      <TouchableOpacity style={styles.button} onPress={() => saveNewTask()}>
+        <Text style={styles.buttonText}>AGREGAR</Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -84,7 +72,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   textInput: {
-    width: 288,
+    width: 303,
     height: 40,
     borderColor: '#D9D9D9',
     borderWidth: 2,
@@ -112,7 +100,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: '#FFFFFF',
     width: 303,
-    height: 36,
+    height: 40,
     marginTop: 33
   },
   buttonText: {
