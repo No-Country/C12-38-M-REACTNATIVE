@@ -28,7 +28,7 @@ icon: {
 }
 })
 
-function InputTime(){
+function InputTime({handleChangeText}){
 
   const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
@@ -54,6 +54,7 @@ function InputTime(){
    if (type == 'set') {
    const currentHour = selectedHour;
    setDate(currentHour);
+   handleChangeText('time', formatDate(currentHour))
 
      if(Platform.OS === 'android') {
       toggleDatepicker();
