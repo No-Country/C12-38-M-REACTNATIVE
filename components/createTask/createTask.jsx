@@ -1,6 +1,5 @@
 import { AntDesign, Entypo } from '@expo/vector-icons'
-import { Link } from 'expo-router'
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { useState } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { db } from '../../services/firebase/firebase.config'
@@ -11,16 +10,19 @@ function CreateTask() {
     name: '',
     day: '',
     time: '',
-    category: '',
-    comment: ''
+    category: ''
   })
 
   const handleChangeText = (name, value) => {
     setstate({ ...state, [name]: value })
   }
 
+  const handleCategoryChange = (value) => {
+    setstate({ ...state, category: value });
+  };
+
   const saveNewTask = async () => {
-    if (state.name === '' || state.day === '' || state.time === '' || state.category === '' || state.comment === '') {
+    if (state.name === '' || state.day === '' || state.time === '' || state.category === '') {
       alert('Please provide all date')
     } else {
       try {
@@ -29,7 +31,7 @@ function CreateTask() {
           day: state.day,
           time: state.time,
           category: state.category,
-          comment: state.comment
+          createdAt: serverTimestamp()
         })
         alert('Registro Completado')
       } catch (e) {
@@ -66,14 +68,12 @@ function CreateTask() {
         />
         <AntDesign style={styles.icon} name='clockcircleo' size={24} color='#B7B7B7' />
       </View>
-      
-      <DropdownCategories />
-      
-      <Link href='../../src/screens/screen'>
-        <TouchableOpacity style={styles.button} onPress={() => saveNewTask()}>
-          <Text style={styles.buttonText}>AGREGAR</Text>
-        </TouchableOpacity>
-      </Link>
+
+      <DropdownCategories setCategory={handleCategoryChange}/>
+
+      <TouchableOpacity style={styles.button} onPress={() => saveNewTask()}>
+        <Text style={styles.buttonText}>AGREGAR</Text>
+      </TouchableOpacity>
     </View>
   )
 }
