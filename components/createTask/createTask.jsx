@@ -4,6 +4,9 @@ import { useState } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { db } from '../../services/firebase/firebase.config'
 import DropdownCategories from './dropdownCategories'
+import InputDate from './inputDate'
+import InputTime from './inputTime'
+
 
 function CreateTask() {
   const [state, setstate] = useState({
@@ -50,27 +53,12 @@ function CreateTask() {
           onChangeText={(value) => handleChangeText('name', value)}
         />
       </View>
-      <View>
-        <TextInput
-          placeholder='El día'
-          placeholderTextColor='#B7B7B7'
-          style={styles.textInput}
-          onChangeText={(value) => handleChangeText('day', value)}
-        />
-        <Entypo style={styles.icon} name='calendar' size={24} color='#B7B7B7' />
-      </View>
-      <View>
-        <TextInput
-          placeholder='A las'
-          placeholderTextColor='#B7B7B7'
-          style={styles.textInput}
-          onChangeText={(value) => handleChangeText('time', value)}
-        />
-        <AntDesign style={styles.icon} name='clockcircleo' size={24} color='#B7B7B7' />
-      </View>
+      <InputDate />
+
+      <InputTime />
 
       <DropdownCategories setCategory={handleCategoryChange}/>
-
+      
       <TouchableOpacity style={styles.button} onPress={() => saveNewTask()}>
         <Text style={styles.buttonText}>AGREGAR</Text>
       </TouchableOpacity>
