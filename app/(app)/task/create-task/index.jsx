@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { CreateTask } from '../../../../components'
 
 const styles = StyleSheet.create({
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
   containerTarea: {
     backgroundColor: '#7141FA',
-    width: 227,
+    width: 303,
     height: 37,
     justifyContent: 'center',
     alignSelf: 'center',

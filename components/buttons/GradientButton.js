@@ -4,13 +4,12 @@ import CheckboxButton from './CheckboxButton'
 import { LinearGradient } from 'expo-linear-gradient'
 
 const categoryColors = {
-  Pendientes: '#008000', // verde
-  Trabajo: '#0000FF', // azul
-  trabajo: '#0000FF', // azul
-  Ejercicio: '#FF0000', // rojo
-  Compras: '#FFA500', // naranja
-  Familia: '#800080', // morado
-  Plus: '#FFC0CB' // rosado
+  Pendientes: '#01AC46',
+  Trabajo: '#4D9DE0',
+  Ejercicio: '#E15554',
+  Compras: '#E1BC29',
+  Familia: '#7768AE',
+  Otros: '#59E4DF'
 }
 
 const GradientButton = ({ color, tarea, hora, dia, categoria }) => {

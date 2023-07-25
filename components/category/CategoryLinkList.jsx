@@ -5,7 +5,9 @@ const styles = StyleSheet.create({
   list: {
     justifyContent: 'center',
     flexDirection: 'row',
-    gap: 24
+    gap: 24,
+    height: 30,
+    width: 200
   }
 })
 

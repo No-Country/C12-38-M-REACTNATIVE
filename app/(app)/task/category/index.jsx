@@ -4,7 +4,7 @@ import { SwipeListView } from 'react-native-swipe-list-view'
 import { TaskRemoveIcon } from '../../../../components'
 import { ButtonCategory } from '../../../../components/buttons/ButtonCategory'
 import GradientButton from '../../../../components/buttons/GradientButton'
-import { db } from '../../../../src/services/firebase'
+import { db } from '../../../../services/firebase/firebase.config'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 
 const CategoryScreen = () => {

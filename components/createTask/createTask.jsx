@@ -1,8 +1,9 @@
+import { AntDesign, Entypo } from '@expo/vector-icons'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { useState } from 'react'
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
-import { Entypo, AntDesign } from '@expo/vector-icons'
-import { db } from '../../src/services/firebase'
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { db } from '../../services/firebase/firebase.config'
+import DropdownCategories from './dropdownCategories'
 
 function CreateTask() {
   const [state, setstate] = useState({
@@ -15,6 +16,10 @@ function CreateTask() {
   const handleChangeText = (name, value) => {
     setstate({ ...state, [name]: value })
   }
+
+  const handleCategoryChange = (value) => {
+    setstate({ ...state, category: value });
+  };
 
   const saveNewTask = async () => {
     if (state.name === '' || state.day === '' || state.time === '' || state.category === '') {
@@ -63,15 +68,9 @@ function CreateTask() {
         />
         <AntDesign style={styles.icon} name='clockcircleo' size={24} color='#B7B7B7' />
       </View>
-      <View>
-        <TextInput
-          placeholder='Categoría'
-          placeholderTextColor='#B7B7B7'
-          style={styles.textInput}
-          onChangeText={(value) => handleChangeText('category', value)}
-        />
-        <AntDesign style={styles.icon} name='caretdown' size={24} color='#B7B7B7' />
-      </View>
+
+      <DropdownCategories setCategory={handleCategoryChange}/>
+
       <TouchableOpacity style={styles.button} onPress={() => saveNewTask()}>
         <Text style={styles.buttonText}>AGREGAR</Text>
       </TouchableOpacity>
@@ -85,7 +84,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   textInput: {
-    width: 288,
+    width: 303,
     height: 40,
     borderColor: '#D9D9D9',
     borderWidth: 2,
@@ -113,7 +112,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: '#FFFFFF',
     width: 303,
-    height: 36,
+    height: 40,
     marginTop: 33
   },
   buttonText: {

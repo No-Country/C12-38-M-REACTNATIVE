@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, TouchableOpacity, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import TodayDate from '../date/todayDate'
 
 export function ArrowIcon({ text, leftIcon, rightIcon, onPressLeft, onPressRight }) {
   return (
@@ -19,7 +20,7 @@ export function ArrowIcon({ text, leftIcon, rightIcon, onPressLeft, onPressRight
 export function DayIcon({ text }) {
   return (
     <TouchableOpacity style={styles.day}>
-      <Text style={styles.textDay}>{text}</Text>
+      <TodayDate />
     </TouchableOpacity>
   )
 }
