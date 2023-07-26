@@ -17,6 +17,10 @@ function WeeklyScreen() {
   //   { id: 6, color: '#4D9DE0' }
   // ])
 
+  const removeTask = (id) => {
+    setTask((prevListOfTasks) => prevListOfTasks.filter((task) => task.id !== id))
+  }
+
   const [tasks, setTask] = useState([])
 
   useEffect(() => {
@@ -37,10 +41,6 @@ function WeeklyScreen() {
       setTask(tasks)
     })
   }, [])
-
-  const removeTask = (id) => {
-    setTask((prevListOfTasks) => prevListOfTasks.filter((task) => task.id !== id))
-  }
 
   return (
     <View style={{ flex: 1 }}>
