@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { SwipeListView } from 'react-native-swipe-list-view'
 import { TaskRemoveIcon } from '../../../../components'
 import { ButtonCategory } from '../../../../components/buttons/ButtonCategory'
 import GradientButton from '../../../../components/buttons/GradientButton'
 import { db } from '../../../../services/firebase/firebase.config'
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 
 const CategoryScreen = () => {
   // const [listOfTasks, setListOfTasks] = useState([
@@ -18,7 +18,7 @@ const CategoryScreen = () => {
   // ])
 
   const removeTask = (id) => {
-    setListOfTasks((prevListOfTasks) => prevListOfTasks.filter((task) => task.id !== id))
+    setTask((prevListOfTasks) => prevListOfTasks.filter((task) => task.id !== id))
   }
 
   const [tasks, setTask] = useState([])
