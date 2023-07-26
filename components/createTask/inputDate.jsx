@@ -28,7 +28,7 @@ icon: {
 }
 })
 
-function InputDate(){
+function InputDate({handleChangeText}){
 
   const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
@@ -55,6 +55,7 @@ function InputDate(){
    if (type == 'set') {
    const currentDate = selectedDate;
    setDate(currentDate);
+   handleChangeText('day', formatDate(currentDate))
 
      if(Platform.OS === 'android') {
       toggleDatepicker();

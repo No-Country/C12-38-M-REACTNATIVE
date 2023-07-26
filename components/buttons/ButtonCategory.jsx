@@ -1,4 +1,7 @@
-import { StyleSheet, Pressable, Text } from 'react-native'
+import React from 'react';
+import { StyleSheet, Pressable, Text } from 'react-native';
+
+
 const style = StyleSheet.create({
   button: {
     alignSelf: 'center',
@@ -23,12 +26,12 @@ const style = StyleSheet.create({
   }
 })
 
-const ButtonCategory = () => {
+const ButtonCategory = ({ selectedCategory }) => {
   return (
     <Pressable style={style.button}>
-      <Text style={style.text}>Trabajo</Text>
+      <Text style={style.text}>{selectedCategory || 'Categoria'}</Text>
     </Pressable>
   )
 }
 
-export { ButtonCategory }
+export {ButtonCategory};

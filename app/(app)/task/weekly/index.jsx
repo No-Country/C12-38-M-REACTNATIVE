@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { useEffect, useState } from 'react'
+import { StyleSheet, View } from 'react-native'
 import { SwipeListView } from 'react-native-swipe-list-view'
 import { TaskRemoveIcon } from '../../../../components'
 import GradientButton from '../../../../components/buttons/GradientButton'
 import { ArrowIcon } from '../../../../components/buttons/Icons'
 import { db } from '../../../../services/firebase/firebase.config'
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
-import DateRange from './dateRange'
 
 function WeeklyScreen() {
   // const [listOfTasks, setListOfTasks] = useState([
@@ -22,7 +21,7 @@ function WeeklyScreen() {
 
   useEffect(() => {
     const taskCollection = collection(db, 'tasks')
-    const orderTaskCollection = query(taskCollection, orderBy("createdAt", "desc"))
+    const orderTaskCollection = query(taskCollection, orderBy('createdAt', 'desc'))
     onSnapshot(orderTaskCollection, (querySnapshot) => {
       const tasks = []
       querySnapshot.forEach((doc) => {
@@ -38,11 +37,11 @@ function WeeklyScreen() {
       setTask(tasks)
     })
   }, [])
-  
+
   const removeTask = (id) => {
-    setListOfTasks((prevListOfTasks) => prevListOfTasks.filter((task) => task.id !== id))
+    setTask((prevListOfTasks) => prevListOfTasks.filter((task) => task.id !== id))
   }
-  
+
   return (
     <View style={{ flex: 1 }}>
       <ArrowIcon
@@ -51,7 +50,7 @@ function WeeklyScreen() {
         rightIcon='chevron-right'
         onPressLeft={() => console.log('Navegar a la página anterior')}
         onPressRight={() => console.log('Navegar a la página siguiente')}
-        />
+      />
 
       <SwipeListView
         data={tasks}

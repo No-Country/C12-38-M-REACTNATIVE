@@ -1,4 +1,3 @@
-import { AntDesign, Entypo } from '@expo/vector-icons'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { useState } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
@@ -6,9 +5,11 @@ import { db } from '../../services/firebase/firebase.config'
 import DropdownCategories from './dropdownCategories'
 import InputDate from './inputDate'
 import InputTime from './inputTime'
-
+import { useRouter } from 'expo-router'
 
 function CreateTask() {
+  const router = useRouter();
+
   const [state, setstate] = useState({
     name: '',
     day: '',
@@ -21,8 +22,8 @@ function CreateTask() {
   }
 
   const handleCategoryChange = (value) => {
-    setstate({ ...state, category: value });
-  };
+    setstate({ ...state, category: value })
+  }
 
   const saveNewTask = async () => {
     if (state.name === '' || state.day === '' || state.time === '' || state.category === '') {
@@ -37,6 +38,7 @@ function CreateTask() {
           createdAt: serverTimestamp()
         })
         alert('Registro Completado')
+        router.replace('/');
       } catch (e) {
         console.error('Error añadiendo el documento', e)
       }
@@ -53,12 +55,12 @@ function CreateTask() {
           onChangeText={(value) => handleChangeText('name', value)}
         />
       </View>
-      <InputDate />
+      <InputDate handleChangeText={handleChangeText}/>
 
-      <InputTime />
+      <InputTime handleChangeText={handleChangeText}/>
 
-      <DropdownCategories setCategory={handleCategoryChange}/>
-      
+      <DropdownCategories setCategory={handleCategoryChange} />
+
       <TouchableOpacity style={styles.button} onPress={() => saveNewTask()}>
         <Text style={styles.buttonText}>AGREGAR</Text>
       </TouchableOpacity>
