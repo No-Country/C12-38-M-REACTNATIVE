@@ -4,16 +4,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import TodayDate from '../date/todayDate'
 import DateRange from '../../app/(app)/task/weekly/dateRange'
 
-export function ArrowIcon({ text, leftIcon, rightIcon, onPressLeft, onPressRight }) {
+export function WeekButton({ text, leftIcon, rightIcon, onPressLeft, onPressRight }) {
   return (
-    <TouchableOpacity style={styles.button} disabled>
-      <TouchableOpacity onPress={onPressLeft}>
-        <Icon style name={leftIcon} size={20} color='#0a0a0a' />
-      </TouchableOpacity>
-      <Text style={styles.text}><DateRange /></Text>
-      <TouchableOpacity onPress={onPressRight}>
-        <Icon name={rightIcon} size={20} color='#0a0a0a' />
-      </TouchableOpacity>
+    <TouchableOpacity style={styles.day} disabled>
+      <Text style={styles.textDay}><DateRange /></Text>
     </TouchableOpacity>
   )
 }
@@ -55,7 +49,7 @@ const styles = StyleSheet.create({
   },
 
   textDay: {
-    color: '#fff',
+    color: 'white',
     fontWeight: '400',
     fontSize: 19
   }
