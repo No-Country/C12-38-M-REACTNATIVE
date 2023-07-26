@@ -6,12 +6,16 @@ const DateRange = () => {
   
     // Función para obtener el rango de fechas (próximos 7 días)
     const getWeekRange = () => {
+      const currentDate = new Date();
       const startDay = currentDate.getDate();
       const startMonth = currentDate.getMonth();
-      const endDay = startDay + 6;
-      const endMonth = startMonth;
-  
-      return `${startDay} al ${endDay} de ${getMonthName(endMonth)}`;
+      const startYear = currentDate.getFullYear();
+    
+      const endDate = new Date(startYear, startMonth, startDay + 6);
+      const endDay = endDate.getDate();
+      const endMonth = endDate.getMonth();
+    
+      return `${startDay} de ${getMonthName(startMonth)} al ${endDay} de ${getMonthName(endMonth)}`;
     };
   
     // Función para obtener el nombre del mes

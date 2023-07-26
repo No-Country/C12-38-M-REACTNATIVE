@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native'
 import { SwipeListView } from 'react-native-swipe-list-view'
 import { TaskRemoveIcon } from '../../../../components'
 import GradientButton from '../../../../components/buttons/GradientButton'
-import { ArrowIcon } from '../../../../components/buttons/Icons'
+import { WeekButton } from '../../../../components/buttons/Icons'
 import { db } from '../../../../services/firebase/firebase.config'
 
 function WeeklyScreen() {
@@ -44,10 +44,8 @@ function WeeklyScreen() {
 
   return (
     <View style={{ flex: 1 }}>
-      <ArrowIcon
+      <WeekButton
         text='Semana x de mes'
-        leftIcon='chevron-left'
-        rightIcon='chevron-right'
         onPressLeft={() => console.log('Navegar a la página anterior')}
         onPressRight={() => console.log('Navegar a la página siguiente')}
       />
