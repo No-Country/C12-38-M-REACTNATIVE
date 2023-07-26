@@ -1,5 +1,6 @@
-import { StyleSheet, Pressable, Text } from 'react-native'
-import TaskCategoryList from '../category/TaskCategoryList'
+import React from 'react';
+import { StyleSheet, Pressable, Text } from 'react-native';
+
 
 const style = StyleSheet.create({
   button: {
@@ -25,12 +26,12 @@ const style = StyleSheet.create({
   }
 })
 
-const ButtonCategory = () => {
+const ButtonCategory = ({ selectedCategory }) => {
   return (
     <Pressable style={style.button}>
-      <Text style={style.text}>{category}</Text>
+      <Text style={style.text}>{selectedCategory || 'Categoria'}</Text>
     </Pressable>
   )
 }
 
-export { ButtonCategory }
+export {ButtonCategory};
