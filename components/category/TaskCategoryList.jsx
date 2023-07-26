@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import TaskCategory from './TaskCategory';
-
+import React, { useState } from 'react'
+import { StyleSheet, View } from 'react-native'
+import TaskCategory from './TaskCategory'
 
 const styles = StyleSheet.create({
   list: {
@@ -14,12 +13,12 @@ const styles = StyleSheet.create({
 })
 
 function TaskCategoryList() {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null)
 
   const handleCategoryPress = (category) => {
-    setSelectedCategory(category);
-  };
-  
+    setSelectedCategory(category)
+  }
+
   return (
     <View style={styles.list}>
       <TaskCategory
@@ -64,11 +63,10 @@ function TaskCategoryList() {
         onPress={() => handleCategoryPress('Otro')}
         isSelected={selectedCategory === 'Otro'}
       />
-
     </View>
   )
 }
 
-export default TaskCategoryList;
+export default TaskCategoryList
 
 /* <ButtonCategory selectedCategory={selectedCategory} /> */

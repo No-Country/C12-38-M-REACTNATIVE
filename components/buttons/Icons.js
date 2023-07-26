@@ -1,13 +1,14 @@
 import React from 'react'
-import { StyleSheet, TouchableOpacity, Text } from 'react-native'
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import TodayDate from '../date/todayDate'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import DateRange from '../../app/(app)/task/weekly/dateRange'
+import TodayDate from '../date/todayDate'
 
 export function WeekButton({ text, leftIcon, rightIcon, onPressLeft, onPressRight }) {
   return (
     <TouchableOpacity style={styles.day} disabled>
-      <Text style={styles.textDay}><DateRange /></Text>
+      <Text style={styles.textDay}>
+        <DateRange />
+      </Text>
     </TouchableOpacity>
   )
 }
