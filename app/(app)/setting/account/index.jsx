@@ -32,16 +32,17 @@ const styles = StyleSheet.create({
 
 function AccountScreen() {
   const { user } = useAuth()
-  const username = user.displayName ?? 'Loto'
+  const name = user?.displayName ?? 'Loto'
+  const email = user?.email ?? 'example@example.com'
 
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>
-        Confirmá o modificá los datos de tu cuenta <Text style={styles.span}>{username}</Text>
+        Confirmá o modificá los datos de tu cuenta <Text style={styles.span}>{name}</Text>
       </Text>
       <View style={styles.form}>
-        <AccountTextInput data={{ type: 'name', placeHolder: username }} />
-        <AccountTextInput data={{ type: 'email', placeHolder: user.email }} />
+        <AccountTextInput data={{ type: 'name', placeHolder: name }} />
+        <AccountTextInput data={{ type: 'email', placeHolder: email }} />
         <AccountTextInput data={{ type: 'password', placeHolder: '**********' }} />
         <AccountTextInput data={{ type: 'password', placeHolder: 'confirmar contraseña' }} />
       </View>
