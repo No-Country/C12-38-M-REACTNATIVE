@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 
 function AccountScreen() {
   const { user } = useAuth()
-  const name = user?.displayName ?? 'Loto'
+  const name = user?.displayName ?? 'LotToDo'
   const email = user?.email ?? 'example@example.com'
 
   return (

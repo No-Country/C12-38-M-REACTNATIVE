@@ -25,11 +25,11 @@ function TaskCategoryList() {
   return (
     <View style={styles.list}>
       <TaskCategory
-        category='Pendientes'
+        category='Pendiente'
         iconName='pin'
         color='#16a34a'
-        onPress={() => handleCategoryPress('Pendientes')}
-        isSelected={selectedCategory === 'Pendientes'}
+        onPress={() => handleCategoryPress('Pendiente')}
+        isSelected={selectedCategory === 'Pendiente'}
       />
       <TaskCategory
         category='Trabajo'

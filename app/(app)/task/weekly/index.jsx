@@ -1,4 +1,4 @@
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { collection, onSnapshot, orderBy, query, doc, deleteDoc } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { SwipeListView } from 'react-native-swipe-list-view'
@@ -8,14 +8,11 @@ import { WeekButton } from '../../../../components/buttons/Icons'
 import { db } from '../../../../services/firebase/firebase.config'
 
 function WeeklyScreen() {
-  // const [listOfTasks, setListOfTasks] = useState([
-  //   { id: 1, color: '#4D9DE0' },
-  //   { id: 2, color: '#E15554' },
-  //   { id: 3, color: '#01AC46' },
-  //   { id: 4, color: '#E1BC29' },
-  //   { id: 5, color: '#4D9DE0' },
-  //   { id: 6, color: '#4D9DE0' }
-  // ])
+  const removeTask = async (id) => {
+    const taskRef = doc(db, 'tasks', id)
+    await deleteDoc(taskRef)
+    setTask((prevListOfTasks) => prevListOfTasks.filter((task) => task.id !== id))
+  }
 
   const [tasks, setTask] = useState([])
   const date = new Date()
@@ -47,10 +44,6 @@ function WeeklyScreen() {
       setTask(filterTasks)
     })
   }, [])
-
-  const removeTask = (id) => {
-    setTask((prevListOfTasks) => prevListOfTasks.filter((task) => task.id !== id))
-  }
 
   return (
     <View style={{ flex: 1 }}>

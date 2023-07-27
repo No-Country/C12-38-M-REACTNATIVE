@@ -1,4 +1,10 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+  updateProfile
+} from 'firebase/auth'
 import { createContext, useEffect, useState } from 'react'
 import { auth } from '../services/firebase/firebase.config'
 
@@ -33,7 +39,11 @@ function UserProvider({ children }) {
     return signOut(auth)
   }
 
-  const values = { user, setUser, signUp, signIn, logOut }
+  const updateProfileImage = (photoURL) => {
+    return updateProfile(auth.currentUser, { photoURL })
+  }
+
+  const values = { user, setUser, signUp, signIn, logOut, updateProfileImage }
 
   return <UserContext.Provider value={values}>{children}</UserContext.Provider>
 }

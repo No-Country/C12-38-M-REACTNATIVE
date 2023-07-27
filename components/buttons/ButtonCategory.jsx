@@ -28,7 +28,7 @@ const style = StyleSheet.create({
 const ButtonCategory = ({ selectedCategory }) => {
   return (
     <Pressable style={style.button}>
-      <Text style={style.text}>{selectedCategory || 'Categoria'}</Text>
+      <Text style={style.text}>{selectedCategory || 'Pendiente'}</Text>
     </Pressable>
   )
 }
