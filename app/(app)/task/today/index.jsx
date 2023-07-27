@@ -16,6 +16,12 @@ function TodayScreen() {
 
   const [tasks, setTask] = useState([])
 
+  const date = new Date()
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear()
+
+  const currentDate = `${day}/${month}/${year}`
   useEffect(() => {
     const taskCollection = collection(db, 'tasks')
     const orderTaskCollection = query(taskCollection, orderBy('createdAt', 'desc'))
@@ -31,7 +37,8 @@ function TodayScreen() {
           category
         })
       })
-      setTask(tasks)
+      const filterTasks = tasks.filter((data) => data.day === currentDate)
+      setTask(filterTasks)
     })
   }, [])
 

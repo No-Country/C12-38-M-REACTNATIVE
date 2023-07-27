@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   text: {
-    color: '#6b7280',
+    color: '#6b7280'
   }
 })
 

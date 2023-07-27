@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native'
-import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons'
-import CheckboxButton from './CheckboxButton'
+import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
+import { StyleSheet, Text, View } from 'react-native'
+import CheckboxButton from './CheckboxButton'
 
 const categoryColors = {
   Pendientes: '#01AC46',
@@ -24,7 +24,9 @@ const GradientButton = ({ color, tarea, hora, dia, categoria }) => {
         <Text style={styles.text}>{tarea}</Text>
         <View style={styles.textContainer}>
           <MaterialCommunityIcons name='clock-time-four-outline' size={20} color='#5C5A5A' />
-          <Text style={styles.text}>{hora}    {dia}</Text>
+          <Text style={styles.text}>
+            {hora} {dia}
+          </Text>
         </View>
         <View
           style={{

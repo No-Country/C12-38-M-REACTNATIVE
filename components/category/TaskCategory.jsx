@@ -1,6 +1,6 @@
 import { Entypo } from '@expo/vector-icons'
 import { Link } from 'expo-router'
-import { TouchableOpacity, StyleSheet, Text } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 
 const styles = StyleSheet.create({
   container: {
@@ -21,13 +21,19 @@ const styles = StyleSheet.create({
 })
 
 function TaskCategory({ category, iconName, color, onPress, isSelected }) {
-  const href = '/task/category'
-
   const containerStyle = {
     backgroundColor: color
   }
+  const url = '/task/category/[id]'
   return (
-    <Link href={href} style={[styles.container, containerStyle]} asChild>
+    <Link
+      href={{
+        pathname: url,
+        params: { id: 'trabajo' }
+      }}
+      style={[styles.container, containerStyle]}
+      asChild
+    >
       <TouchableOpacity onPress={onPress}>
         <Entypo name={iconName} size={40} color='#ffffff' />
         {category && <Text style={styles.text}>{category}</Text>}
@@ -36,4 +42,4 @@ function TaskCategory({ category, iconName, color, onPress, isSelected }) {
   )
 }
 
-export default TaskCategory;
+export default TaskCategory
