@@ -1,14 +1,21 @@
 import { Entypo } from '@expo/vector-icons'
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
-import { Stack, useRouter } from 'expo-router'
+import { Redirect, Stack, useRouter } from 'expo-router'
 import { useRef } from 'react'
+import { Text } from 'react-native'
 import { ProfileImage, SettingModal, TabBar } from '../../components'
 import GlobalProvider from '../../context/global.context'
+import { useAuth } from '../../hooks'
 function AppLayout() {
+  const { user } = useAuth()
+
   const bottomSheetModalRef = useRef(null)
 
   const handleModalOpen = () => bottomSheetModalRef.current?.present()
   const handleModalClose = () => bottomSheetModalRef.current?.dismiss()
+
+  if (user === false) return <Text>CARGANDO</Text>
+  if (!user) return <Redirect href='/login' />
 
   return (
     <GlobalProvider>
@@ -37,7 +44,7 @@ function AppLayout() {
           <Stack.Screen name='task/monthly/index' options={{ title: 'Mensual' }} />
           <Stack.Screen name='task/today/index' options={{ title: 'Hoy' }} />
           <Stack.Screen name='task/weekly/index' options={{ title: 'Semanal' }} />
-          <Stack.Screen name='task/category/index' options={{ title: '' }} />
+          <Stack.Screen name='task/category/[id]/index' options={{ title: 'Categorias' }} />
         </Stack>
         <TabBar />
         <SettingModal ref={bottomSheetModalRef} onModalClose={handleModalClose} />
