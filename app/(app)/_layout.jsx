@@ -37,7 +37,7 @@ function AppLayout() {
           <Stack.Screen name='task/monthly/index' options={{ title: 'Mensual' }} />
           <Stack.Screen name='task/today/index' options={{ title: 'Hoy' }} />
           <Stack.Screen name='task/weekly/index' options={{ title: 'Semanal' }} />
-          <Stack.Screen name='task/category/index' options={{ title: '' }} />
+          <Stack.Screen name='task/category/[id]/index' options={{ title: 'LoToDo' }} />
         </Stack>
         <TabBar />
         <SettingModal ref={bottomSheetModalRef} onModalClose={handleModalClose} />

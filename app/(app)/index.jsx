@@ -36,7 +36,7 @@ function HomeScreen() {
         <Text style={styles.message}>
           tienes{' '}
           <Text style={styles.task}>
-            <TaskCounter /> tareas
+            <TaskCounter style={styles.task} /> tareas
           </Text>{' '}
           hoy!
         </Text>
