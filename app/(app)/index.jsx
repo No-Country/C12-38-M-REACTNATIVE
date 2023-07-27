@@ -30,8 +30,8 @@ function HomeScreen() {
       <View style={styles.text}>
         <UpdatedDate />
         <Text style={styles.message}>
-          tienes <Text style={styles.task}>5 tareas</Text> hoy!  
-        </Text> 
+          tienes <Text style={styles.task}>5 tareas</Text> hoy!
+        </Text>
       </View>
       <CategoryLinkList />
       <TaskCategoryList />
