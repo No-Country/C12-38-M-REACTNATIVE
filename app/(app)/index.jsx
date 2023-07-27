@@ -1,4 +1,3 @@
-import { Link } from 'expo-router'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { CategoryLinkList, TaskCategoryList } from '../../components'
 import UpdatedDate from '../../components/date/updatedDate'
@@ -21,7 +20,7 @@ const styles = StyleSheet.create({
   message: {
     fontSize: 24,
     fontWeight: '600',
-    textAlign: 'center', 
+    textAlign: 'center',
     marginBottom: 10
   },
   task: {
@@ -35,8 +34,12 @@ function HomeScreen() {
       <View style={styles.text}>
         <UpdatedDate />
         <Text style={styles.message}>
-          tienes <Text style={styles.task}><TaskCounter /> tareas</Text> hoy!  
-        </Text> 
+          tienes{' '}
+          <Text style={styles.task}>
+            <TaskCounter /> tareas
+          </Text>{' '}
+          hoy!
+        </Text>
       </View>
       <CategoryLinkList />
       <TaskCategoryList />
