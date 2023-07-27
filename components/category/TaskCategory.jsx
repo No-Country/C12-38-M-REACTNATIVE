@@ -21,13 +21,19 @@ const styles = StyleSheet.create({
 })
 
 function TaskCategory({ category, iconName, color, onPress, isSelected }) {
-  const href = '/task/category'
-
   const containerStyle = {
     backgroundColor: color
   }
+  const url = '/task/category/[id]'
   return (
-    <Link href={href} style={[styles.container, containerStyle]} asChild>
+    <Link
+      href={{
+        pathname: url,
+        params: { id: 'trabajo' }
+      }}
+      style={[styles.container, containerStyle]}
+      asChild
+    >
       <TouchableOpacity onPress={onPress}>
         <Entypo name={iconName} size={40} color='#ffffff' />
         {category && <Text style={styles.text}>{category}</Text>}

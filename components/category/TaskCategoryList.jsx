@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
+import { globalContext } from '../../context/global.context'
 import TaskCategory from './TaskCategory'
 
 const styles = StyleSheet.create({
@@ -14,9 +15,11 @@ const styles = StyleSheet.create({
 
 function TaskCategoryList() {
   const [selectedCategory, setSelectedCategory] = useState(null)
+  const { getCategory } = useContext(globalContext)
 
   const handleCategoryPress = (category) => {
     setSelectedCategory(category)
+    getCategory(category)
   }
 
   return (

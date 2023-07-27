@@ -1,11 +1,11 @@
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { SwipeListView } from 'react-native-swipe-list-view'
-import { TaskRemoveIcon } from '../../../../components'
-import { ButtonCategory } from '../../../../components/buttons/ButtonCategory'
-import GradientButton from '../../../../components/buttons/GradientButton'
-import { db } from '../../../../services/firebase/firebase.config'
+import { GradientButton, TaskRemoveIcon } from '../../../../../components'
+import { ButtonCategory } from '../../../../../components/buttons/ButtonCategory'
+import { globalContext } from '../../../../../context/global.context'
+import { db } from '../../../../../services/firebase/firebase.config'
 
 const CategoryScreen = () => {
   // const [listOfTasks, setListOfTasks] = useState([
@@ -16,6 +16,8 @@ const CategoryScreen = () => {
   //   { id: 5, color: '#4D9DE0' },
   //   { id: 6, color: '#4D9DE0' }
   // ])
+
+  const { getAnswerCategory } = useContext(globalContext)
 
   const removeTask = (id) => {
     setTask((prevListOfTasks) => prevListOfTasks.filter((task) => task.id !== id))
@@ -38,13 +40,14 @@ const CategoryScreen = () => {
           category
         })
       })
-      setTask(tasks)
+      const filterTask = tasks.filter((data) => data.category === getAnswerCategory)
+      setTask(filterTask)
     })
   }, [])
 
   return (
     <View style={style.cont}>
-      <ButtonCategory />
+      <ButtonCategory selectedCategory={getAnswerCategory} />
       <SwipeListView
         data={tasks}
         renderItem={({ item }) => (
