@@ -44,6 +44,7 @@ function AppLayout() {
           <Stack.Screen name='task/monthly/index' options={{ title: 'Mensual' }} />
           <Stack.Screen name='task/today/index' options={{ title: 'Hoy' }} />
           <Stack.Screen name='task/weekly/index' options={{ title: 'Semanal' }} />
+          
           <Stack.Screen name='task/category/[id]/index' options={{ title: 'Categorias' }} />
         </Stack>
         <TabBar />

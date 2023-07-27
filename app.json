@@ -4,7 +4,7 @@
     "slug": "lot-todo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Inicio.png",
     "userInterfaceStyle": "light",
     "scheme": "lot-todo",
     "splash": {

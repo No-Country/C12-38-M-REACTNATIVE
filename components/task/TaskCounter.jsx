@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 32,
         fontWeight: 'bold',
-        alignSelf: 'flex-end'
+        alignSelf: 'flex-end',
+        top: 10
     }
 })
 
