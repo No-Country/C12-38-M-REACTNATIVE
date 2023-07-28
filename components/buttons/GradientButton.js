@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import { StyleSheet, Text, View } from 'react-native'
@@ -12,10 +13,16 @@ const categoryColors = {
   Otros: '#59E4DF'
 }
 
-const GradientButton = ({ color, tarea, hora, dia, categoria }) => {
+const GradientButton = ({ color, tarea, hora, dia, categoria, taskId, selected }) => {
+  const [isChecked, setIsChecked] = useState(selected);
+
+  const handleCheckedChange = (newValue) => {
+    setIsChecked(newValue);
+  }
+
   return (
     <LinearGradient
-      style={styles.container}
+      style={[styles.container, isChecked ? {opacity: .8} : {}]}
       colors={[categoryColors[color], '#f1f1f1']}
       start={{ x: 0.8, y: 0 }}
       end={{ x: 0.8, y: 1.2 }}
@@ -25,7 +32,7 @@ const GradientButton = ({ color, tarea, hora, dia, categoria }) => {
         <View style={styles.textContainer}>
           <MaterialCommunityIcons name='clock-time-four-outline' size={20} color='#5C5A5A' />
           <Text style={styles.text}>
-            {hora} {dia}
+            {hora}    {dia}
           </Text>
         </View>
         <View
@@ -39,7 +46,7 @@ const GradientButton = ({ color, tarea, hora, dia, categoria }) => {
           <Text style={styles.text}>{categoria}</Text>
         </View>
         <View style={styles.check}>
-          <CheckboxButton />
+          <CheckboxButton taskID={taskId} selected={selected} onCheckedChange={handleCheckedChange}/>
         </View>
       </View>
     </LinearGradient>
@@ -69,8 +76,8 @@ const styles = StyleSheet.create({
 
   check: {
     position: 'absolute',
-    top: 34,
-    right: 0
+    top: 29,
+    right: -7,
   }
 })
 
