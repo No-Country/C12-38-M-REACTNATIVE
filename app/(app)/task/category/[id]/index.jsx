@@ -8,14 +8,6 @@ import { globalContext } from '../../../../../context/global.context'
 import { db } from '../../../../../services/firebase/firebase.config'
 
 const CategoryScreen = () => {
-  // const [listOfTasks, setListOfTasks] = useState([
-  //   { id: 1, color: '#4D9DE0' },
-  //   { id: 2, color: '#E15554' },
-  //   { id: 3, color: '#01AC46' },
-  //   { id: 4, color: '#E1BC29' },
-  //   { id: 5, color: '#4D9DE0' },
-  //   { id: 6, color: '#4D9DE0' }
-  // ])
 
   const { getAnswerCategory } = useContext(globalContext)
 
@@ -31,13 +23,14 @@ const CategoryScreen = () => {
     onSnapshot(orderTaskCollection, (querySnapshot) => {
       const tasks = []
       querySnapshot.forEach((doc) => {
-        const { name, day, time, category } = doc.data()
+        const { name, day, time, category, selected } = doc.data()
         tasks.push({
           id: doc.id,
           name,
           day,
           time,
-          category
+          category,
+          selected
         })
       })
       const filterTask = tasks.filter((data) => data.category === getAnswerCategory)
@@ -52,12 +45,13 @@ const CategoryScreen = () => {
         data={tasks}
         renderItem={({ item }) => (
           <GradientButton
-            key={item.id}
+            taskId={item.id}
             color={item.category}
             tarea={item.name}
             hora={item.time}
             dia={item.day}
             categoria={item.category}
+            selected={item.selected}
           />
         )}
         renderHiddenItem={({ item }) => <TaskRemoveIcon task={item} removeTask={removeTask} />}

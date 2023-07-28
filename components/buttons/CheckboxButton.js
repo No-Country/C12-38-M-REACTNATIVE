@@ -1,42 +1,50 @@
 import Checkbox from 'expo-checkbox'
 import React, { useState } from 'react'
-import { StyleSheet, View } from 'react-native'
-import { doc, updateDoc } from '@firebase/firestore'
-import { db } from '../../services/firebase/firebase.config' 
+import { StyleSheet, View, Text } from 'react-native'
+import { db } from '../../services/firebase/firebase.config'
+import { updateDoc, doc } from '@firebase/firestore'
 
-export default function App({ tarea, usuario }) { // pasar los props tarea y usuario
-  const [isChecked, setChecked] = useState(false)
+export default function App({ taskID, selected, onCheckedChange }) {
+  const [isChecked, setChecked] = useState(selected)
+  const [showCompletedMessage, setShowCompletedMessage] = useState(selected)
 
-  const onButtonPress = () => {
-    const refTask = doc(db, `/users/${usuario}/Year1/${tarea}`) // acceder al documento donde se guarda el valor del checkbox
-    updateDoc(refTask, {  // actualizar el valor del checkbox
-      checked: !isChecked // cambiar el valor a su opuesto
-    });
-    setChecked(!isChecked); // actualizar el estado local del checkbox
-  };
+  const handleValueChange = async (newValue) => {
+    if (newValue) {
+      setChecked(newValue)
+      setShowCompletedMessage(newValue);
+      await updateDoc(doc(db, 'tasks', taskID), { selected: newValue });
+      onCheckedChange(newValue);
+    }
+  }
 
   return (
     <View style={styles.section}>
       <Checkbox
         style={styles.checkbox}
         value={isChecked}
-        onValueChange={onButtonPress} // llamar a la función cuando se cambie el valor del checkbox
+        onValueChange={handleValueChange}
         color={isChecked ? '#4630EB' : undefined}
       />
+      {showCompletedMessage && <Text style={styles.text}>🚀</Text>}
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   section: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center'
   },
   checkbox: {
     margin: 8,
-    padding: 10,
+    padding: 12,
     borderColor: '#000',
     borderWidth: 2.8,
-    borderRadius: 6
+    borderRadius: 6,
+  },
+  text: {
+    fontWeight: 'bold',
+    fontSize: 30,
+    marginTop: -5
   }
 })

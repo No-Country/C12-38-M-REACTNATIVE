@@ -14,7 +14,8 @@ function CreateTask() {
     name: '',
     day: '',
     time: '',
-    category: ''
+    category: '',
+    selected: false
   })
 
   const handleChangeText = (name, value) => {
@@ -35,7 +36,8 @@ function CreateTask() {
           day: state.day,
           time: state.time,
           category: state.category,
-          createdAt: serverTimestamp()
+          createdAt: serverTimestamp(),
+          selected: false
         })
         alert('Registro Completado')
         router.replace('/')

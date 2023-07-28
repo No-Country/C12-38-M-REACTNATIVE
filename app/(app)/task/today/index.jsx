@@ -28,13 +28,14 @@ function TodayScreen() {
     onSnapshot(orderTaskCollection, (querySnapshot) => {
       const tasks = []
       querySnapshot.forEach((doc) => {
-        const { name, day, time, category } = doc.data()
+        const { name, day, time, category, selected } = doc.data()
         tasks.push({
           id: doc.id,
           name,
           day,
           time,
-          category
+          category,
+          selected
         })
       })
       const filterTasks = tasks.filter((data) => data.day === currentDate)
@@ -49,12 +50,13 @@ function TodayScreen() {
         data={tasks}
         renderItem={({ item }) => (
           <GradientButton
-            key={item.id}
+            taskId={item.id}
             color={item.category}
             tarea={item.name}
             hora={item.time}
             dia={item.day}
             categoria={item.category}
+            selected={item.selected}
           />
         )}
         renderHiddenItem={({ item }) => <TaskRemoveIcon task={item} removeTask={removeTask} />}
