@@ -5,12 +5,12 @@ import { StyleSheet, Text, View } from 'react-native'
 import CheckboxButton from './CheckboxButton'
 
 const categoryColors = {
-  Pendientes: '#01AC46',
+  Pendiente: '#01AC46',
   Trabajo: '#4D9DE0',
   Ejercicio: '#E15554',
   Compras: '#E1BC29',
   Familia: '#7768AE',
-  Otros: '#59E4DF'
+  Otro: '#59E4DF'
 }
 
 const GradientButton = ({ color, tarea, hora, dia, categoria, taskId, selected }) => {
