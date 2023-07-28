@@ -3,11 +3,12 @@ import { SelectList } from 'react-native-dropdown-select-list'
 
 const DropdownCategories = ({ setCategory }) => {
   const data = [
-    { key: 'familia', value: 'Familia' },
-    { key: 'trabajo', value: 'Trabajo' },
-    { key: 'ejercicio', value: 'Ejercicio' },
-    { key: 'compras', value: 'Compras' },
-    { key: 'otro', value: 'Otros' }
+    { key: 'Pendiente', value: 'Pendiente' },
+    { key: 'Familia', value: 'Familia' },
+    { key: 'Trabajo', value: 'Trabajo' },
+    { key: 'Ejercicio', value: 'Ejercicio' },
+    { key: 'Compras', value: 'Compras' },
+    { key: 'Otro', value: 'Otro' }
   ]
 
   return (
