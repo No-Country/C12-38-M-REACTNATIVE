@@ -1,4 +1,4 @@
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { collection, onSnapshot, orderBy, query, doc, deleteDoc } from 'firebase/firestore'
 import { useContext, useEffect, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { SwipeListView } from 'react-native-swipe-list-view'
@@ -11,7 +11,9 @@ const CategoryScreen = () => {
 
   const { getAnswerCategory } = useContext(globalContext)
 
-  const removeTask = (id) => {
+  const removeTask = async (id) => {
+    const taskRef = doc(db, 'tasks', id)
+    await deleteDoc(taskRef)
     setTask((prevListOfTasks) => prevListOfTasks.filter((task) => task.id !== id))
   }
 
