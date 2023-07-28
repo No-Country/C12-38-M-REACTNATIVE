@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { collection, query, onSnapshot } from 'firebase/firestore';
+import { collection, query, onSnapshot, getCountFromServer, Query, QuerySnapshot } from 'firebase/firestore';
 import { db } from '../../services/firebase/firebase.config';
 import { View, Text, StyleSheet } from 'react-native';
 
@@ -16,7 +16,7 @@ const TaskCounter = () => {
     const [taskCount, setTaskCount] = useState(0);
 
     useEffect( () =>{
-        const taskRef = collection(db, 'task');
+        const taskRef = collection(db, 'tasks');
 
         //crear consulta para obtener el total de documentos en collection
         const queryRef = query(taskRef);

@@ -38,7 +38,7 @@ function HomeScreen() {
           <Text style={styles.task}>
             <TaskCounter style={styles.task} /> tareas
           </Text>{' '}
-          hoy!
+          !
         </Text>
       </View>
       <CategoryLinkList />
