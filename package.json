@@ -36,7 +36,8 @@
     "react-native-screens": "~3.20.0",
     "react-native-swipeable-list": "^0.1.2",
     "react-native-web": "~0.18.10",
-    "@react-native-community/datetimepicker": "6.7.3"
+    "@react-native-community/datetimepicker": "6.7.3",
+    "expo-crypto": "~12.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

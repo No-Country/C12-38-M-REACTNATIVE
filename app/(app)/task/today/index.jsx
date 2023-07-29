@@ -16,22 +16,30 @@ function TodayScreen() {
 
   const [tasks, setTask] = useState([])
 
+  const date = new Date()
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear()
+
+  const currentDate = `${day}/${month}/${year}`
   useEffect(() => {
     const taskCollection = collection(db, 'tasks')
     const orderTaskCollection = query(taskCollection, orderBy('createdAt', 'desc'))
     onSnapshot(orderTaskCollection, (querySnapshot) => {
       const tasks = []
       querySnapshot.forEach((doc) => {
-        const { name, day, time, category } = doc.data()
+        const { name, day, time, category, selected } = doc.data()
         tasks.push({
           id: doc.id,
           name,
           day,
           time,
-          category
+          category,
+          selected
         })
       })
-      setTask(tasks)
+      const filterTasks = tasks.filter((data) => data.day === currentDate)
+      setTask(filterTasks)
     })
   }, [])
 
@@ -42,12 +50,13 @@ function TodayScreen() {
         data={tasks}
         renderItem={({ item }) => (
           <GradientButton
-            key={item.id}
+            taskId={item.id}
             color={item.category}
             tarea={item.name}
             hora={item.time}
             dia={item.day}
             categoria={item.category}
+            selected={item.selected}
           />
         )}
         renderHiddenItem={({ item }) => <TaskRemoveIcon task={item} removeTask={removeTask} />}

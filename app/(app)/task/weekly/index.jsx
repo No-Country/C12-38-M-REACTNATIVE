@@ -15,6 +15,11 @@ function WeeklyScreen() {
   }
 
   const [tasks, setTask] = useState([])
+  const date = new Date()
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear()
+  const currentDate = new Date(`${day}/${month}/${year}`.replace(/\//g, '-'))
 
   useEffect(() => {
     const taskCollection = collection(db, 'tasks')
@@ -22,16 +27,22 @@ function WeeklyScreen() {
     onSnapshot(orderTaskCollection, (querySnapshot) => {
       const tasks = []
       querySnapshot.forEach((doc) => {
-        const { name, day, time, category } = doc.data()
+        const { name, day, time, category, selected } = doc.data()
         tasks.push({
           id: doc.id,
           name,
           day,
           time,
-          category
+          category,
+          selected
         })
       })
-      setTask(tasks)
+      const filterTasks = tasks.filter((data) => {
+        const tipeOfDate = new Date(data.day.replace(/\//g, '-'))
+        const diference = (tipeOfDate - currentDate) / (1000 * 60 * 60 * 24)
+        return data.day.split('/')[0] >= day && data.day.split('/')[1] === month && diference >= 7
+      })
+      setTask(filterTasks)
     })
   }, [])
 
@@ -47,12 +58,13 @@ function WeeklyScreen() {
         data={tasks}
         renderItem={({ item }) => (
           <GradientButton
-            key={item.id}
+            taskId={item.id}
             color={item.category}
             tarea={item.name}
             hora={item.time}
             dia={item.day}
             categoria={item.category}
+            selected={item.selected}
           />
         )}
         renderHiddenItem={({ item }) => <TaskRemoveIcon task={item} removeTask={removeTask} />}

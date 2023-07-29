@@ -1,8 +1,9 @@
-import { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons'
+import * as ImagePicker from 'expo-image-picker'
+import { useRouter } from 'expo-router'
 import { Image, Pressable, StyleSheet, View } from 'react-native'
-import * as ImagePicker from 'expo-image-picker';
-
+import { useAuth } from '../../hooks'
+import { uploadImageAsync } from '../../services/storage/images.service'
 
 const styles = StyleSheet.create({
   image: {
@@ -22,33 +23,38 @@ const styles = StyleSheet.create({
 const imageSource = require('../../assets/images/image-icon.png')
 
 function ChangeProfileImage() {
-
-  const [image, setImage] = useState(null);
+  const { replace } = useRouter()
+  const { user, updateProfileImage } = useAuth()
 
   const buttonCamera = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
+    const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
-      quality: 1,
-    });
+      quality: 1
+    })
 
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
-    } 
-  };
+      const imageURI = result.assets[0].uri
+      const imageURL = await uploadImageAsync('users/images', imageURI)
+      await updateProfileImage(imageURL)
+      replace('/')
+    }
+  }
 
   return (
     <View>
-      {!image ? 
-      <Pressable onPress={buttonCamera} >
-        <Image source={imageSource} style={styles.image} />
-        <Ionicons style={styles.iconCamera} name='camera' size={60} color='#B7B7B7' />
-      </Pressable> :
-      <Pressable onPress={buttonCamera} >
-        <Image source={{ uri: image }} style={styles.image} />
-        <Ionicons style={styles.iconCamera} name='camera' size={60} color='#B7B7B7' />
-      </Pressable>}
+      {!user?.photoURL ? (
+        <Pressable onPress={buttonCamera}>
+          <Image source={imageSource} style={styles.image} />
+          <Ionicons style={styles.iconCamera} name='camera' size={60} color='#B7B7B7' />
+        </Pressable>
+      ) : (
+        <Pressable onPress={buttonCamera}>
+          <Image source={{ uri: user?.photoURL }} style={styles.image} />
+          <Ionicons style={styles.iconCamera} name='camera' size={60} color='#B7B7B7' />
+        </Pressable>
+      )}
     </View>
   )
 }

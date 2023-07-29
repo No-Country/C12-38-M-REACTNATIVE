@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { useState } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
@@ -5,16 +6,16 @@ import { db } from '../../services/firebase/firebase.config'
 import DropdownCategories from './dropdownCategories'
 import InputDate from './inputDate'
 import InputTime from './inputTime'
-import { useRouter } from 'expo-router'
 
 function CreateTask() {
-  const router = useRouter();
+  const router = useRouter()
 
   const [state, setstate] = useState({
     name: '',
     day: '',
     time: '',
-    category: ''
+    category: '',
+    selected: false
   })
 
   const handleChangeText = (name, value) => {
@@ -35,10 +36,11 @@ function CreateTask() {
           day: state.day,
           time: state.time,
           category: state.category,
-          createdAt: serverTimestamp()
+          createdAt: serverTimestamp(),
+          selected: false
         })
         alert('Registro Completado')
-        router.replace('/');
+        router.replace('/')
       } catch (e) {
         console.error('Error añadiendo el documento', e)
       }
@@ -55,9 +57,9 @@ function CreateTask() {
           onChangeText={(value) => handleChangeText('name', value)}
         />
       </View>
-      <InputDate handleChangeText={handleChangeText}/>
+      <InputDate handleChangeText={handleChangeText} />
 
-      <InputTime handleChangeText={handleChangeText}/>
+      <InputTime handleChangeText={handleChangeText} />
 
       <DropdownCategories setCategory={handleCategoryChange} />
 
