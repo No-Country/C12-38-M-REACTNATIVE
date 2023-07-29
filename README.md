@@ -21,7 +21,13 @@
 
 # **💬TECHNOLOGIES USED**
 
-...
+> ### **💅 Front End**
+>
+> Use of `Expo` as development framework, `React Native` for interface development, `Style Sheets` for style development, `Context API` for state handling and management, `Expo Router` for project routing, `Standard` as ESLint rules, `NPM` for package management, `Git` for version control and `Github` for hosting project code.
+
+> ### **💻 Back End**
+>
+> Use of `Firebase` as BaaS framework, `Firebase Firestore` for database management, `Firebase Authentication` for authentication and `EAS Build` for APK creation.
 
 # **👨‍💻COLABORATORS**
 
