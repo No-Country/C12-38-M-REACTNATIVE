@@ -1,6 +1,6 @@
 # **📂LOT TODO**
 
-...
+The application seeks to offer a tool to potential users to organize their daily activities through lists of tasks divided by categories and with the possibility of visualizing them on a daily, weekly and monthly basis; as well as a home screen where you can see at a glance the total number of tasks created. There is also the possibility of deleting these tasks or marking them as completed. Finally, you can register as a user, change your account data and profile picture.
 
 # **📑 GUIDE**
 
