@@ -13,7 +13,7 @@ The application seeks to offer a tool to potential users to organize their daily
 
 # **🚀DEMO**
 
-[...](...)
+[Expo Lot Todo](https://expo.dev/@florencia09/lot-todo?serviceType=classic&distribution=expo-go)
 
 # **📸IMAGES**
 
