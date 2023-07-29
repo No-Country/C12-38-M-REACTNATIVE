@@ -17,7 +17,8 @@ The application seeks to offer a tool to potential users to organize their daily
 
 # **📸IMAGES**
 
-...
+![](./assets/mockups/lotodo-mock.jpg)
+![](./assets/mockups/lottodo-mock2.jpg)
 
 # **💬TECHNOLOGIES USED**
 
